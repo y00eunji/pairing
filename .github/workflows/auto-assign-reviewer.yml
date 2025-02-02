@@ -1,16 +1,18 @@
-name: Review Assign
+name: Auto Assign Reviewers
 
 on:
   pull_request:
     types: [opened, ready_for_review]
 
 jobs:
-  assign:
+  add-reviewers:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
     steps:
-      - uses: hkusu/review-assign-action@v1
+      - name: Add Reviewers
+        uses: kentaro-m/auto-assign-action@v1
         with:
-          assignees: ${{ github.actor }} # assign pull request author
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           reviewers: "y00eunji, handbefore"
+         

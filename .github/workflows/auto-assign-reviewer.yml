@@ -11,8 +11,8 @@ jobs:
       pull-requests: write
     steps:
       - name: Add Reviewers
-        uses: kentaro-m/auto-assign-action@v1
+        uses: kentaro-m/auto-assign-action@v2.0.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          reviewers: "y00eunji, handbefore"
+          configuration-path: '.github/auto-assign-reviewer.yml'
          

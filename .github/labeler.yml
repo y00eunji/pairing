@@ -5,8 +5,7 @@ enable:
 # 레이블을 성공적으로 붙이고 PR에 보낼 코멘트를 설정
 comments:
   prs: |
-    Labeler has applied any labels matching special text in your title and description.
-
+    🏷️ 라벨이 추가되었습니다. 알맞게 설정되었는지 확인해주세요!
 
 # 레이블
 labels:

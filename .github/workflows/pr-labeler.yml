@@ -10,7 +10,7 @@ jobs:
   labeler:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       pull-requests: write
     steps:
       - name: Check Labels

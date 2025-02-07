@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 export default {
   content: [
@@ -39,5 +40,23 @@ export default {
       semiBold: '600',
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addUtilities, e }) => {
+      addUtilities({
+        [`.here`]: {
+          animation: `wobble 0.5s ease-in-out alternate infinite`,
+        },
+        [`@keyframes wobble`]: {
+          '0%': {
+            'box-shadow':
+              'inset 4px 4px rgb(144, 238, 144), inset -4px -4px rgb(144, 238, 144)',
+          },
+          '100%': {
+            'box-shadow':
+              'inset 8px 8px rgb(144, 238, 144), inset -8px -8px rgb(144, 238, 144)',
+          },
+        },
+      });
+    }),
+  ],
 } satisfies Config;

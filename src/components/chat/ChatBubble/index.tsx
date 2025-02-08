@@ -1,4 +1,5 @@
 import { cn } from '@/utils/cn';
+import formatTime from '@/utils/date';
 import { PropsWithChildren } from 'react';
 
 interface Props {
@@ -6,17 +7,6 @@ interface Props {
   isMe?: boolean; // 내가 보낸 메시지인지
   isRead?: boolean; // 읽음 표시
 }
-
-const formatTime = (date: Date) => {
-  const timeString = date.toLocaleTimeString('en-US', {
-    hour: 'numeric',
-    minute: '2-digit',
-    hour12: true,
-  });
-
-  const [time, meridiem] = timeString.split(' ');
-  return `${meridiem} ${time}`;
-};
 
 export default function ChatBubble({
   time,

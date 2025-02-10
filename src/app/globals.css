@@ -2,20 +2,88 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
+  /* layout */
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --layout-max-w: 520px;
+    --layout-min-h: 100dvh;
+    --layout-min-w: 375px;
+  }
+  .layout {
+    @apply w-full mx-auto;
+    max-width: var(--layout-max-w);
+    min-height: var(--layout-min-h);
+    min-width: var(--layout-min-w);
   }
 }
 
+@layer utilities {
+  .font-12-regular {
+    @apply text-[12px]/[140%] tracking-[-0.36px] font-regular;
+  }
+  .font-12-medium {
+    @apply text-[12px]/[140%] tracking-[-0.36px] font-medium;
+  }
+  .font-12-bold {
+    @apply text-[12px]/[140%] tracking-[-0.36px] font-bold;
+  }
+
+  .font-14-regular {
+    @apply text-[14px]/[140%] tracking-[-0.42px] font-regular;
+  }
+  .font-14-medium {
+    @apply text-[14px]/[140%] tracking-[-0.42px] font-medium;
+  }
+  .font-14-bold {
+    @apply text-[14px]/[140%] tracking-[-0.42px] font-bold;
+  }
+
+  .font-16-regular {
+    @apply text-[16px]/[140%] tracking-[-0.42px] font-regular;
+  }
+  .font-16-medium {
+    @apply text-[16px]/[140%] tracking-[-0.42px] font-medium;
+  }
+  .font-16-bold {
+    @apply text-[16px]/[140%] tracking-[-0.42px] font-bold;
+  }
+
+  .font-18-regular {
+    @apply text-[18px]/[140%] tracking-[-0.42px] font-regular;
+  }
+  .font-18-medium {
+    @apply text-[18px]/[140%] tracking-[-0.42px] font-medium;
+  }
+  .font-18-bold {
+    @apply text-[18px]/[140%] tracking-[-0.42px] font-bold;
+  }
+
+  .font-20-regular {
+    @apply text-[20px]/[140%] tracking-[-0.42px] font-regular;
+  }
+  .font-20-medium {
+    @apply text-[20px]/[140%] tracking-[-0.42px] font-medium;
+  }
+  .font-20-bold {
+    @apply text-[20px]/[140%] tracking-[-0.42px] font-bold;
+  }
+
+  .font-24-regular {
+    @apply text-[24px]/[140%] tracking-[-0.42px] font-regular;
+  }
+  .font-24-medium {
+    @apply text-[24px]/[140%] tracking-[-0.42px] font-medium;
+  }
+  .font-24-bold {
+    @apply text-[24px]/[140%] tracking-[-0.42px] font-bold;
+  }
+}
+
+html {
+  background-color: white;
+}
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-noto), sans-serif;
 }

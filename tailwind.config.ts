@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        sm: '375px',
+      },
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
@@ -20,8 +23,8 @@ export default {
         gray3: '#EFEFEF',
       },
       fontFamily: {
-        sans: ['Graphik', 'sans-serif'],
-        roboto: ['Roboto', 'sans-serif'],
+        noto: ['var(--font-noto)', 'sans-serif'],
+        roboto: ['var(--font-roboto)', 'sans-serif'],
       },
     },
     fontSize: {

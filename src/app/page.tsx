@@ -1,3 +1,7 @@
 export default function Home() {
-  return <div>Hello World</div>;
+  return (
+    <main className="layout flex flex-col overflow-hidden shadow-lg">
+      Hello World
+    </main>
+  );
 }

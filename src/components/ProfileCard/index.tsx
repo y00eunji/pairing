@@ -6,13 +6,13 @@ import DeleteIcon from '/public/assets/icons/profileCard_delete.svg';
 
 interface ProfileCardProps {
   name: string;
-  age: number;
+  age?: React.ReactNode;
   location: string;
 }
 
 export default function ProfileCard({ name, age, location }: ProfileCardProps) {
   return (
-    <div className=" m-7 relative w-80 h-80 bg-gray1 rounded-xl">
+    <div className=" m-7 relative w-96 h-96 bg-gray1 rounded-xl shadow-lg">
       {/* 배경 그라데이션 */}
       <div className="absolute w-full h-full bg-gradient-to-t from-mainPink2 via-transparent to-transparent rounded-xl z-0"></div>
 
@@ -26,7 +26,7 @@ export default function ProfileCard({ name, age, location }: ProfileCardProps) {
         <div className="pb-2">
           <FaceAuthIcon />
         </div>
-        <div className="text-22px font-semiBold text-white space-x-3 pb-2">
+        <div className="font-24-medium text-white space-x-3 pb-2">
           <span>{name}</span>
           <span>{age}</span>
         </div>

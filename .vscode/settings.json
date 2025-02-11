@@ -6,10 +6,5 @@
   "editor.formatOnSave": true,
   "editor.quickSuggestions": {
     "strings": true
-  },
-  "files.associations": {
-    "*.js": "javascript",
-    "*.tsx": "typescript",
-    "*.css": "tailwindcss"
   }
 }

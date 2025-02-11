@@ -3,14 +3,16 @@ import { ButtonHTMLAttributes } from 'react';
 import { cn } from '@/utils/cn';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: 'large' | 'small';
+  shape?: 'rectangle' | 'circle';
   variant?: 'filled' | 'outline' | 'disabled';
   isSelected?: boolean;
+  width?: number;
+  height?: number;
 }
 
-const SIZE = {
-  large: 'w-full h-[52px] rounded-[14px]',
-  small: 'w-[55px] h-[35px] rounded-full',
+const SHAPES = {
+  rectangle: 'rounded-[14px]',
+  circle: 'rounded-full',
 };
 
 const VARIANTS = {
@@ -20,8 +22,10 @@ const VARIANTS = {
 };
 
 export default function Button({
-  size = 'small',
+  shape = 'rectangle',
   variant = 'disabled',
+  width = 60,
+  height = 30,
   isSelected = false,
   className,
   children,
@@ -31,12 +35,14 @@ export default function Button({
     <button
       type="button"
       className={cn(
-        'text-[16px] font-semiBold',
-        SIZE[size],
+        'font-16-medium flex items-center justify-center',
+        `w-[${width}px] h-[${height}px]`,
+        SHAPES[shape],
         VARIANTS[variant],
         isSelected && 'ring-2 ring-mainPink1',
         className,
       )}
+      style={{ width, height }}
       {...restProps}
     >
       {children}

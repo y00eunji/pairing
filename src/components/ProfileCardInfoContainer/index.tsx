@@ -12,7 +12,10 @@ export default function ProfileCardInfoContainer({
   tags,
 }: Props) {
   return (
-    <div className="w-full h-[115px] shadow-md rounded-[14px] p-[19px] bg-white flex flex-col gap-[16px]">
+    <div
+      className="w-full h-[115px] rounded-[14px] p-[19px] bg-white flex flex-col gap-[16px] 
+    shadow-[0px_3px_3px_rgba(0,0,0,0.05),_0px_-3px_3px_rgba(0,0,0,0.05),_3px_0px_3px_rgba(0,0,0,0.05),_-3px_0px_3px_rgba(0,0,0,0.05)]"
+    >
       {/* 제목 */}
       <div className="flex items-center space-x-[10px] h-[24px] text-20px text-mainPink1 font-medium">
         <div>{icon}</div>
@@ -24,7 +27,10 @@ export default function ProfileCardInfoContainer({
       {tags && tags.length > 0 && (
         <div className="flex flex-wrap gap-[10px]">
           {tags.map((tag) => (
-            <div className="text-18px bg-gray3 px-[12px] py-[3px] rounded-[20px]">
+            <div
+              key={tag}
+              className="text-18px bg-gray3 px-[12px] py-[3px] rounded-[20px]"
+            >
               {tag}
             </div>
           ))}

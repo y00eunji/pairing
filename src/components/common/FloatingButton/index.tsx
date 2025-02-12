@@ -8,7 +8,7 @@ interface Props {
 
 export default function FloatingButton({ onClickDirect, onClickHeart }: Props) {
   return (
-    <div className="fixed bottom-10 right-[19px] flex gap-[13px]">
+    <div className="bottom-10 right-[19px] flex gap-[13px]">
       <button onClick={onClickDirect}>
         <FloatingDirectIcon />
       </button>

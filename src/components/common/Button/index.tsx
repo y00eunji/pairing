@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 
 import { cn } from '@/utils/cn';
 
@@ -6,8 +6,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   shape?: 'rectangle' | 'circle';
   variant?: 'filled' | 'outline' | 'disabled';
   isSelected?: boolean;
-  width?: number;
-  height?: number;
+  width?: string;
+  height?: string;
 }
 
 const SHAPES = {
@@ -24,8 +24,8 @@ const VARIANTS = {
 export default function Button({
   shape = 'rectangle',
   variant = 'disabled',
-  width = 60,
-  height = 30,
+  width = '60px',
+  height = '30px',
   isSelected = false,
   className,
   children,
@@ -34,15 +34,24 @@ export default function Button({
   return (
     <button
       type="button"
+      disabled={variant === 'disabled'}
       className={cn(
         'font-16-medium flex items-center justify-center',
-        `w-[${width}px] h-[${height}px]`,
+        width,
+        height,
         SHAPES[shape],
         VARIANTS[variant],
         isSelected && 'ring-2 ring-mainPink1',
         className,
       )}
-      style={{ width, height }}
+      style={{
+        width:
+          typeof width === 'string' && width.includes('px') ? width : undefined,
+        height:
+          typeof height === 'string' && height.includes('px')
+            ? height
+            : undefined,
+      }}
       {...restProps}
     >
       {children}

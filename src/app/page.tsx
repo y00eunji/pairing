@@ -1,7 +1,9 @@
+import ProfileOnboarding from '@/components/onboarding/Profile';
+
 export default function Home() {
   return (
-    <main className="layout flex flex-col overflow-hidden shadow-lg">
-      Hello World
-    </main>
+    <div className="w-full h-screen">
+      <ProfileOnboarding />
+    </div>
   );
 }

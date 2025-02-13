@@ -1,6 +1,7 @@
-import Providers from '@/provider/providers';
 import type { Metadata } from 'next';
 import { Noto_Sans_KR, Roboto } from 'next/font/google';
+
+import Providers from '@/provider/providers';
 import './globals.css';
 
 const roboto = Roboto({
@@ -27,6 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="format-detection"
+          content="telephone=no, address=no, email=no"
+        />
+      </head>
       <body
         className={`${roboto.variable} ${noto.variable} antialiased relative overscroll-y-none min-h-[100dvh] scrollbar-hide`}
       >

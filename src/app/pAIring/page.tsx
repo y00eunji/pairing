@@ -1,7 +1,9 @@
 import BottomNavBar from '@/components/BottomNavBar';
 import KeywordRecommendation from '@/components/KeywordRecommendation';
 import ProfileCard from '@/components/ProfileCard';
+
 import Link from 'next/link';
+
 import AgeIcon from '/public/assets/icons/keyword_age.svg';
 import BeerIcon from '/public/assets/icons/keyword_beer.svg';
 import LocationIcon from '/public/assets/icons/keyword_location.svg';

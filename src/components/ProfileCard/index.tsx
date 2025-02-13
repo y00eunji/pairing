@@ -1,3 +1,5 @@
+'use client';
+
 import DirectIcon from '/public/assets/icons/button_direct.svg';
 import HeartIcon from '/public/assets/icons/button_heart.svg';
 import FaceAuthIcon from '/public/assets/icons/face_auth.svg';

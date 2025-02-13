@@ -1,5 +1,8 @@
-import { cn } from '@/utils/cn';
+'use client';
+
 import type { ComponentProps } from 'react';
+
+import { cn } from '@/utils/cn';
 
 interface Props extends ComponentProps<'input'> {
   inputRef?: React.Ref<HTMLInputElement>;

@@ -4,28 +4,29 @@ import ResetIcon from '/public/assets/icons/text_reset.svg';
 
 import Button from '@/components/common/Button';
 import OnboardingHeader from '@/components/header/OnboardingHeader';
+import { useOnboarding } from '@/contexts/OnboardingContext';
 import { useInput } from '@/hooks/useInput';
 
-import OnboardingInput from '../Input';
-import Title from '../Title';
+import OnboardingInput from '../../Input';
+import Title from '../../Title';
 
-import type { OnboardingProps } from '@/types/onboarding';
+import type { StepChildProps } from '@/hooks/useFunnel';
 
 export default function Name({
-  setContent,
   onNext,
   onPrev,
   currentStepNumber = 1,
   totalStepsNumber = 8,
-}: OnboardingProps) {
-  const { value, setValue } = useInput('');
+}: StepChildProps) {
+  const { data, updateData } = useOnboarding();
+  const { value, setValue } = useInput(data?.profile?.name || '');
 
   const isButtonEnabled = value !== '';
 
   const handleNext = () => {
     if (!isButtonEnabled) return;
 
-    setContent((prev) => ({ ...prev, name: value }));
+    updateData({ profile: { ...data?.profile, name: value } });
     onNext?.();
   };
 
@@ -34,19 +35,19 @@ export default function Name({
   };
 
   return (
-    <div className="h-[100dvh]">
+    <div className="relative h-[100dvh]">
       <OnboardingHeader
         onPrev={onPrev}
         currentStep={currentStepNumber}
         totalSteps={totalStepsNumber}
       />
-      <div className="w-full px-5 py-8 flex flex-col h-[calc(100%-56px)] justify-between">
+      <div className="w-full px-5 py-8 flex flex-col">
         <div>
           <div className="mb-10">
             <Title
               title="이름이 무엇인가요?"
               currentStepNumber={currentStepNumber}
-              totalStepsNumber={totalStepsNumber}
+              totalStepsNumber={totalStepsNumber - 1}
             />
           </div>
           <OnboardingInput
@@ -56,17 +57,16 @@ export default function Name({
             rightIcon={value ? <ResetIcon onClick={handleReset} /> : undefined}
           />
         </div>
-
-        <Button
-          shape="rectangle"
-          variant={isButtonEnabled ? 'filled' : 'disabled'}
-          width="w-full"
-          height="55px"
-          className=""
-          onClick={handleNext}
-        >
-          다음
-        </Button>
+        <div className="absolute bottom-0 left-0 w-full px-5 py-8">
+          <Button
+            shape="rectangle"
+            variant={isButtonEnabled ? 'filled' : 'disabled'}
+            className="w-full h-[55px]"
+            onClick={handleNext}
+          >
+            다음
+          </Button>
+        </div>
       </div>
     </div>
   );

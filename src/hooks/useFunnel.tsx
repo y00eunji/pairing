@@ -1,23 +1,25 @@
 import type { ReactElement } from 'react';
 import React, { useState } from 'react';
 
-interface StepProps {
-  name: string;
-  children: ReactElement<StepChildProps>;
+interface StepProps<T extends string = string> {
+  name: T;
+  children: ReactElement<StepChildProps<T>>;
 }
 
-export interface StepChildProps {
+export interface StepChildProps<T extends string = string> {
   onNext?: () => void;
   onPrev?: () => void;
-  totalStepsNumber: number;
-  currentStepNumber: number;
+  goToStep?: (stepName: T) => void;
+  totalStepsNumber?: number; // optional
+  currentStepNumber?: number; // optional
+  currentStage?: number;
 }
 
-interface FunnelProps {
-  children: ReactElement<StepProps>;
+interface FunnelProps<T extends string> {
+  children: ReactElement<StepProps<T>>;
 }
 
-export const useFunnel = (steps: readonly string[]) => {
+export const useFunnel = <T extends string>(steps: readonly T[]) => {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const currentStep = steps[currentStepIndex];
   const totalStepsNumber = steps.length - 1;
@@ -35,15 +37,49 @@ export const useFunnel = (steps: readonly string[]) => {
     }
   };
 
-  const goToStep = (stepName: string) => {
+  const goToStep = (stepName: T) => {
     const stepIndex = steps.indexOf(stepName);
     if (stepIndex !== -1) {
       setCurrentStepIndex(stepIndex);
     }
   };
 
-  const Step = ({ name, children }: StepProps) => {
-    if (name !== currentStep) return null;
+  const getStepNumbers = (stepName: T) => {
+    const profileSteps = steps.slice(0, 9);
+    const idealSteps = steps.slice(9, 15);
+    const faceAuthSteps = steps.slice(15);
+
+    if (profileSteps.includes(stepName)) {
+      return {
+        currentStep: profileSteps.indexOf(stepName) + 1,
+        totalSteps: profileSteps.length,
+      };
+    }
+    if (idealSteps.includes(stepName)) {
+      return {
+        currentStep: idealSteps.indexOf(stepName) + 1,
+        totalSteps: idealSteps.length,
+      };
+    }
+    if (faceAuthSteps.includes(stepName)) {
+      return {
+        currentStep: faceAuthSteps.indexOf(stepName) + 1,
+        totalSteps: faceAuthSteps.length,
+      };
+    }
+    return { currentStep: 1, totalSteps: 1 };
+  };
+
+  const getCurrentStage = (stepName: T) => {
+    if (stepName.startsWith('profile')) return 1;
+    if (stepName.startsWith('ideal')) return 2;
+    if (stepName.startsWith('face-auth')) return 3;
+    return 1;
+  };
+
+  const Step = ({ name, children }: StepProps<T>) => {
+    const { currentStep: stepNumber, totalSteps } = getStepNumbers(name);
+    const stage = getCurrentStage(name);
 
     return (
       <div>
@@ -51,14 +87,16 @@ export const useFunnel = (steps: readonly string[]) => {
           ...children.props,
           onNext: next,
           onPrev: prev,
-          totalStepsNumber,
-          currentStepNumber,
+          goToStep: goToStep,
+          totalStepsNumber: totalSteps,
+          currentStepNumber: stepNumber,
+          currentStage: stage,
         })}
       </div>
     );
   };
 
-  const Funnel = ({ children }: FunnelProps) => {
+  const Funnel = ({ children }: FunnelProps<T>) => {
     return React.Children.map(children, (child) => {
       if (React.isValidElement(child) && child.type === Step) {
         return child;
@@ -79,5 +117,6 @@ export const useFunnel = (steps: readonly string[]) => {
     totalStepsNumber, // 총 단계 수
     currentStepNumber, // 현재 단계 번호 (1부터 시작)
     progress: (currentStepIndex + 1) / steps.length, // 진행률 (0 ~ 1)
+    currentStage: getCurrentStage(currentStep),
   } as const;
 };

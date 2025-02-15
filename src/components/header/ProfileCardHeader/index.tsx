@@ -1,7 +1,9 @@
 import ActionModal from '@/components/modal/ActionModal';
 import ListModal from '@/components/modal/ListModal';
 import { useModal } from '@/hooks/useModal';
+
 import { useState } from 'react';
+
 import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
 import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
 import FaceAuthIcon from '/public/assets/icons/face_auth.svg';
@@ -151,7 +153,7 @@ export default function ProfileCardHeader({
       {/* 차단 완료 모달 */}
       <ActionModal
         isOpen={blockModal.isOpen}
-        icon={<CheckIcon />}
+        icon={<CheckIcon fill="#FF85A2" />}
         message="차단 되었습니다."
         buttons={[
           {

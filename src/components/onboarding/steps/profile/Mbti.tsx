@@ -5,9 +5,10 @@ import { useState } from 'react';
 import Button from '@/components/common/Button';
 import ChipButton from '@/components/common/ChipButton';
 import OnboardingHeader from '@/components/header/OnboardingHeader';
-import type { OnboardingProps } from '@/types/onboarding';
+import { useOnboarding } from '@/contexts/OnboardingContext';
+import type { StepChildProps } from '@/hooks/useFunnel';
 
-import Title from '../Title';
+import Title from '../../Title';
 
 type MbtiType = 'ei' | 'sn' | 'tf' | 'jp';
 type MbtiValue = Record<MbtiType, string>;
@@ -20,17 +21,17 @@ const MBTI_OPTIONS = {
 } as const;
 
 export default function Mbti({
-  setContent,
   onNext,
   onPrev,
   currentStepNumber = 6,
   totalStepsNumber = 8,
-}: OnboardingProps) {
+}: StepChildProps) {
+  const { data, updateData } = useOnboarding();
   const [selections, setSelections] = useState<MbtiValue>({
-    ei: '',
-    sn: '',
-    tf: '',
-    jp: '',
+    ei: data?.profile?.mbti?.split('')[0] || '',
+    sn: data?.profile?.mbti?.split('')[1] || '',
+    tf: data?.profile?.mbti?.split('')[2] || '',
+    jp: data?.profile?.mbti?.split('')[3] || '',
   });
 
   const isButtonEnabled = Object.values(selections).every(Boolean);
@@ -43,24 +44,24 @@ export default function Mbti({
     if (!isButtonEnabled) return;
 
     const mbtiValue = Object.values(selections).join('');
-    setContent((prev) => ({ ...prev, mbti: mbtiValue }));
+    updateData({ profile: { ...data?.profile, mbti: mbtiValue } });
     onNext?.();
   };
 
   return (
-    <div className="h-[100dvh]">
+    <div className="relative h-[100dvh]">
       <OnboardingHeader
         onPrev={onPrev}
         currentStep={currentStepNumber}
         totalSteps={totalStepsNumber}
       />
-      <div className="w-full px-5 py-8 flex flex-col h-[calc(100%-56px)] justify-between">
+      <div className="w-full px-5 py-8 flex flex-col">
         <div>
           <div className="mb-10">
             <Title
               title="MBTI를 선택해주세요."
               currentStepNumber={currentStepNumber}
-              totalStepsNumber={totalStepsNumber}
+              totalStepsNumber={totalStepsNumber - 1}
             />
           </div>
 
@@ -88,15 +89,16 @@ export default function Mbti({
           ))}
         </div>
 
-        <Button
-          shape="rectangle"
-          variant={isButtonEnabled ? 'filled' : 'disabled'}
-          width="w-full"
-          height="55px"
-          onClick={handleNext}
-        >
-          다음
-        </Button>
+        <div className="absolute bottom-0 left-0 w-full px-5 py-8">
+          <Button
+            shape="rectangle"
+            variant={isButtonEnabled ? 'filled' : 'disabled'}
+            className="w-full h-[55px]"
+            onClick={handleNext}
+          >
+            다음
+          </Button>
+        </div>
       </div>
     </div>
   );

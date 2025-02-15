@@ -5,19 +5,20 @@ import { useState } from 'react';
 import Button from '@/components/common/Button';
 import ImageUploader from '@/components/common/ImageUploader';
 import OnboardingHeader from '@/components/header/OnboardingHeader';
-import type { OnboardingProps } from '@/types/onboarding';
+import { useOnboarding } from '@/contexts/OnboardingContext';
+import type { StepChildProps } from '@/hooks/useFunnel';
 
-import Title from '../Title';
+import Title from '../../Title';
 
 export default function MyImage({
-  setContent,
   onNext,
   onPrev,
   currentStepNumber = 8,
   totalStepsNumber = 8,
-}: OnboardingProps) {
-  const [images, setImages] = useState<string[]>([]);
-  const isButtonEnabled = images.length > 0;
+}: StepChildProps) {
+  const { data, updateData } = useOnboarding();
+  const [images, setImages] = useState<string[]>(data?.profile?.photo || []);
+  const isButtonEnabled = images.length >= 3;
 
   const handleImageUpload = (imageUrl: string) => {
     if (images.length >= 5) {
@@ -32,26 +33,29 @@ export default function MyImage({
   };
 
   const handleNext = () => {
-    if (images.length === 0) return;
-    setContent((prev) => ({ ...prev, images }));
-    onNext?.();
+    if (images.length >= 3) {
+      updateData({ profile: { ...data?.profile, photo: images } });
+      onNext?.();
+    } else {
+      alert('사진을 3장 이상 추가해주세요.');
+    }
   };
 
   return (
-    <div className="h-[100dvh]">
+    <div className="relative h-[100dvh]">
       <OnboardingHeader
         onPrev={onPrev}
         currentStep={currentStepNumber}
         totalSteps={totalStepsNumber}
       />
 
-      <div className="w-full px-5 py-8 flex flex-col h-[calc(100%-56px)] justify-between">
+      <div className="w-full px-5 py-8 flex flex-col">
         <div>
           <div className="mb-10">
             <Title
               title="마지막 단계에요!"
               currentStepNumber={currentStepNumber}
-              totalStepsNumber={totalStepsNumber}
+              totalStepsNumber={totalStepsNumber - 1}
             />
             <Title title="최근에 찍은 사진을 추가해주세요." />
             <div className="font-14-regular mt-[10px]">
@@ -68,21 +72,22 @@ export default function MyImage({
                 onImageUpload={handleImageUpload}
                 onImageDelete={() => handleImageDelete(index)}
                 imageUrl={images[index]}
+                wide={false}
               />
             ))}
           </div>
         </div>
 
-        <Button
-          shape="rectangle"
-          variant={isButtonEnabled ? 'filled' : 'disabled'}
-          width="w-full"
-          height="55px"
-          className=""
-          onClick={handleNext}
-        >
-          다음
-        </Button>
+        <div className="absolute bottom-0 left-0 w-full px-5 py-8">
+          <Button
+            shape="rectangle"
+            variant={isButtonEnabled ? 'filled' : 'disabled'}
+            className="w-full h-[55px]"
+            onClick={handleNext}
+          >
+            다음
+          </Button>
+        </div>
       </div>
     </div>
   );

@@ -8,12 +8,8 @@
     --layout-max-w: 520px;
     --layout-min-h: 100dvh;
     --layout-min-w: 375px;
-    --layout-bg-color: #f9f9f9;
   }
 
-  main {
-    background-color: var(--layout-bg-color);
-  }
 
   .layout {
     @apply w-full mx-auto;

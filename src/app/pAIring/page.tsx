@@ -24,37 +24,42 @@ const profileCardList = [
 
 export default function MainPage() {
   return (
-    <div className="relative min-h-screen pb-20">
-      <div className="w-full mx-auto px-[100px]">
-        {/* 로고 영역 */}
-        <div className="flex justify-start py-6 -ml-6">
-          <Link href="/pAIring">
-            <LogoIcon />
-          </Link>
-        </div>
+    <div className="relative min-h-screen p-6 bg-[#f9f9f9]">
+      <div className="flex flex-col pb-24">
+        <div className="flex flex-col">
+          {/* 로고 영역 */}
+          <div className="flex flex-col gap-5">
+            <div className="flex justify-start">
+              <Link href="/pAIring">
+                <LogoIcon />
+              </Link>
+            </div>
+            {/* 프로필카드 영역 */}
+            <div className="flex flex-col items-center gap-3">
+              {profileCardList.map((item, index) => (
+                <ProfileCard
+                  key={index}
+                  name={item.name}
+                  age={item.age}
+                  location={item.location}
+                />
+              ))}
+            </div>
+          </div>
 
-        {/* 프로필카드 영역 */}
-        <div className="flex flex-col items-center space-y-2">
-          {profileCardList.map((item, index) => (
-            <ProfileCard
-              key={index}
-              name={item.name}
-              age={item.age}
-              location={item.location}
-            />
-          ))}
-        </div>
-
-        {/* 추천 키워드 영역 */}
-        <div className="flex flex-col mt-6 pb-6">
-          <p className="font-24-bold pt-6 pb-4 -ml-6">맞춤 추천</p>
-          <div className="flex justify-center">
-            <KeywordRecommendation keywords={keywords} />
+          {/* 추천 키워드 영역 */}
+          <div className="flex flex-col mt-6">
+            <p className="font-24-bold mb-5">맞춤 추천</p>
+            <div className="flex justify-center">
+              <KeywordRecommendation keywords={keywords} />
+            </div>
           </div>
         </div>
       </div>
 
-      <BottomNavBar />
+      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[520px]">
+        <BottomNavBar />
+      </div>
     </div>
   );
 }

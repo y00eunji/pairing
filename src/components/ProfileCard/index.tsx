@@ -14,7 +14,7 @@ interface ProfileCardProps {
 
 export default function ProfileCard({ name, age, location }: ProfileCardProps) {
   return (
-    <div className=" m-7 relative w-96 h-96 bg-gray1 rounded-xl shadow-lg">
+    <div className="relative w-full h-[335px] bg-gray1 rounded-xl shadow-lg">
       {/* 배경 그라데이션 */}
       <div className="absolute w-full h-full bg-gradient-to-t from-mainPink2 via-transparent to-transparent rounded-xl z-0"></div>
 

@@ -5,43 +5,38 @@ import { useState } from 'react';
 import Button from '@/components/common/Button';
 import ChipButton from '@/components/common/ChipButton';
 import OnboardingHeader from '@/components/header/OnboardingHeader';
-import type { OnboardingProps } from '@/types/onboarding';
+import type { DrinkStatusType, SmokeStatusType } from '@/constants/wellness';
+import { DRINK_STATUS, SMOKE_STATUS } from '@/constants/wellness';
+import { useOnboarding } from '@/contexts/OnboardingContext';
+import type { StepChildProps } from '@/hooks/useFunnel';
 
-import Title from '../Title';
+import Title from '../../Title';
 
-// TODO: 임시 ID
-const DRINK_OPTIONS = [
-  { id: 'drink1', text: '즐깁니다' },
-  { id: 'drink2', text: '피할 수 없을 때만' },
-  { id: 'drink3', text: '가끔 마심' },
-  { id: 'drink4', text: '자주 마심' },
-  { id: 'drink5', text: '금주중' },
-];
-
-const SMOKE_OPTIONS = [
-  { id: 'smoke1', text: '비흡연' },
-  { id: 'smoke2', text: '가끔 피움' },
-  { id: 'smoke3', text: '매일 피움' },
-  { id: 'smoke4', text: '자주 마심' },
-  { id: 'smoke5', text: '금연중' },
-];
+const DRINK_OPTIONS = Object.entries(DRINK_STATUS);
+const SMOKE_OPTIONS = Object.entries(SMOKE_STATUS);
 
 export default function Wellness({
-  setContent,
   onNext,
   onPrev,
   currentStepNumber = 7,
   totalStepsNumber = 8,
-}: OnboardingProps) {
+}: StepChildProps) {
+  const { data, updateData } = useOnboarding();
   const [selectedWellness, setSelectedWellness] = useState<{
-    drink?: string;
-    smoke?: string;
-  }>({});
+    drink?: DrinkStatusType;
+    smoke?: SmokeStatusType;
+  }>({
+    drink: data?.profile?.drink,
+    smoke: data?.profile?.smoke,
+  });
 
-  const handleSelect = (type: 'drink' | 'smoke', value: string) => {
+  const handleSelect = (
+    type: 'drink' | 'smoke',
+    key: DrinkStatusType | SmokeStatusType,
+  ) => {
     setSelectedWellness((prev) => ({
       ...prev,
-      [type]: value,
+      [type]: key,
     }));
   };
 
@@ -49,7 +44,13 @@ export default function Wellness({
 
   const handleNext = () => {
     if (!isButtonEnabled) return;
-    setContent((prev) => ({ ...prev, wellness: selectedWellness }));
+    updateData({
+      profile: {
+        ...data?.profile,
+        drink: selectedWellness.drink,
+        smoke: selectedWellness.smoke,
+      },
+    });
     onNext?.();
   };
 
@@ -68,34 +69,38 @@ export default function Wellness({
               <Title
                 title="음주 흡연 습관은 어떤가요?"
                 currentStepNumber={currentStepNumber}
-                totalStepsNumber={totalStepsNumber}
+                totalStepsNumber={totalStepsNumber - 1}
               />
             </div>
             <div className="flex flex-col gap-10 font-18-regular">
               <div className="w-full flex flex-col gap-3">
                 <div className="font-14-medium">음주를 즐기시나요?</div>
-                {DRINK_OPTIONS.map((option) => (
+                {DRINK_OPTIONS.map(([key, text]) => (
                   <ChipButton
-                    key={option.id}
+                    key={key}
                     variant="wide"
-                    isSelected={selectedWellness.drink === option.text}
-                    onClick={() => handleSelect('drink', option.text)}
+                    isSelected={selectedWellness.drink === key}
+                    onClick={() =>
+                      handleSelect('drink', key as DrinkStatusType)
+                    }
                   >
-                    {option.text}
+                    {text}
                   </ChipButton>
                 ))}
               </div>
 
               <div className="w-full flex flex-col gap-3">
-                <div className="font-14-medium">흡연스타일은 어떤가요?</div>
-                {SMOKE_OPTIONS.map((option) => (
+                <div className="font-14-medium">흡연습타일은 어떤가요?</div>
+                {SMOKE_OPTIONS.map(([key, text]) => (
                   <ChipButton
-                    key={option.id}
+                    key={key}
                     variant="wide"
-                    isSelected={selectedWellness.smoke === option.text}
-                    onClick={() => handleSelect('smoke', option.text)}
+                    isSelected={selectedWellness.smoke === key}
+                    onClick={() =>
+                      handleSelect('smoke', key as SmokeStatusType)
+                    }
                   >
-                    {option.text}
+                    {text}
                   </ChipButton>
                 ))}
               </div>
@@ -106,8 +111,7 @@ export default function Wellness({
             <Button
               shape="rectangle"
               variant={isButtonEnabled ? 'filled' : 'disabled'}
-              width="w-full"
-              height="55px"
+              className="w-full h-[55px]"
               onClick={handleNext}
             >
               다음

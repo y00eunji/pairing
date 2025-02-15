@@ -1,9 +1,5 @@
-import ProfileOnboarding from './Profile';
+import OnboardingFunnel from './steps';
 
 export default function Onboarding() {
-  return (
-    <div>
-      <ProfileOnboarding />
-    </div>
-  );
+  return <OnboardingFunnel />;
 }

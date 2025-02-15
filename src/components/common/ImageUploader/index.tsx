@@ -1,23 +1,27 @@
 'use client';
 
-import Image from 'next/image';
-
 import type { ChangeEvent } from 'react';
 import { useRef } from 'react';
 
+import Image from 'next/image';
+
 import DeleteImgIcon from '/public/assets/icons/delete_img.svg';
 import ImagePlusIcon from '/public/assets/icons/image_plus.svg';
+
+import { cn } from '@/utils/cn';
 
 interface ImageUploaderProps {
   onImageUpload: (imageUrl: string) => void;
   onImageDelete?: () => void;
   imageUrl?: string;
+  wide?: boolean;
 }
 
 export default function ImageUploader({
   onImageUpload,
   onImageDelete,
   imageUrl,
+  wide,
 }: ImageUploaderProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -39,21 +43,30 @@ export default function ImageUploader({
   };
 
   return (
-    <div className="relative">
+    <div className={cn('relative', wide ? 'w-full aspect-square' : '')}>
       <button
         type="button"
         onClick={handleClick}
-        className="w-28 h-28 bg-gray3 rounded-[14px] flex items-center justify-center overflow-hidden"
+        className={cn(
+          wide
+            ? 'w-full h-full bg-gray3 rounded-[14px] flex items-center justify-center overflow-hidden'
+            : 'w-28 h-28 bg-gray3 rounded-[14px] flex items-center justify-center overflow-hidden',
+        )}
       >
         {imageUrl ? (
-          <Image
-            src={imageUrl}
-            alt="업로드된 이미지"
-            className="w-full h-full object-cover rounded-[14px]"
-            fill
-          />
+          <div className="relative w-full h-full">
+            <Image
+              src={imageUrl}
+              alt="업로드된 이미지"
+              className="rounded-[14px] object-cover"
+              fill
+              sizes={wide ? '100vw' : '112px'}
+            />
+          </div>
         ) : (
-          <ImagePlusIcon />
+          <div className={cn(wide && 'scale-[2]')}>
+            <ImagePlusIcon />
+          </div>
         )}
       </button>
       {imageUrl && (

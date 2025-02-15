@@ -15,7 +15,7 @@ export default function KeywordList({ keywords }: KeywordListProps) {
             <span>{item.title}</span>
           </div>
           {/* 버튼 */}
-          <Button shape="circle" variant="filled" width={80} height={30}>
+          <Button shape="circle" variant="filled" className="w-20 h-8">
             선택하기
           </Button>
         </div>

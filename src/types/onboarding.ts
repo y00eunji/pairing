@@ -1,16 +1,8 @@
-import type { Dispatch, SetStateAction } from 'react';
+import type { DrinkStatusType, SmokeStatusType } from '@/constants/wellness';
 
-export interface OnboardingProps {
-  setContent: Dispatch<SetStateAction<Content>>;
-  onNext?: () => void;
-  onPrev?: () => void;
-  currentStepNumber?: number;
-  totalStepsNumber?: number;
-}
-
-export interface Content {
+export interface ProfileContent {
   name?: string;
-  gender?: string;
+  gender?: 'MALE' | 'FEMALE';
   birth?: string;
   address?: {
     city: string;
@@ -18,9 +10,32 @@ export interface Content {
   };
   hobby?: string[];
   mbti?: string;
-  wellness?: {
-    drink?: string;
-    smoke?: string;
+  drink?: DrinkStatusType;
+  smoke?: SmokeStatusType;
+  photo?: string[];
+}
+
+export interface idalTypeContent {
+  mbti?: string[];
+  address?: {
+    city: string;
+    district: string;
+  }[];
+  age?: {
+    min: number;
+    max: number;
   };
-  photo?: string;
+  hobby?: string[];
+  drink?: DrinkStatusType;
+  smoke?: SmokeStatusType;
+}
+
+export interface faceAuthContent {
+  image: string;
+}
+
+export interface OnboardingData {
+  profile?: ProfileContent;
+  idealType?: idalTypeContent;
+  faceAuth?: faceAuthContent;
 }

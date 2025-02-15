@@ -5,22 +5,22 @@ import { useState } from 'react';
 import AddressOption from '@/components/common/AddressOption';
 import Button from '@/components/common/Button';
 import OnboardingHeader from '@/components/header/OnboardingHeader';
-import type { OnboardingProps } from '@/types/onboarding';
+import { useOnboarding } from '@/contexts/OnboardingContext';
+import type { StepChildProps } from '@/hooks/useFunnel';
 
-import Title from '../Title';
+import Title from '../../Title';
 
 export default function Address({
-  setContent,
   onNext,
   onPrev,
   currentStepNumber = 4,
   totalStepsNumber = 8,
-}: OnboardingProps) {
+}: StepChildProps) {
+  const { data, updateData } = useOnboarding();
   const [isOpen, setIsOpen] = useState(false);
-  const [address, setAddress] = useState<{ city: string; district: string }>({
-    city: '',
-    district: '',
-  });
+  const [address, setAddress] = useState(
+    data?.profile?.address || { city: '', district: '' },
+  );
 
   const isButtonEnabled = address.city && address.district;
 
@@ -30,25 +30,24 @@ export default function Address({
 
   const handleNext = () => {
     if (!isButtonEnabled) return;
-
-    setContent((prev) => ({ ...prev, address: address }));
+    updateData({ profile: { ...data?.profile, address } });
     onNext?.();
   };
 
   return (
-    <div className="h-[100dvh]">
+    <div className="relative h-[100dvh]">
       <OnboardingHeader
         onPrev={onPrev}
         currentStep={currentStepNumber}
         totalSteps={totalStepsNumber}
       />
-      <div className="relative w-full px-5 py-8 flex flex-col h-[calc(100%-56px)] justify-between">
+      <div className="w-full px-5 py-8 flex flex-col">
         <div>
           <div className="mb-10">
             <Title
               title="거주지는 어디인가요?"
               currentStepNumber={currentStepNumber}
-              totalStepsNumber={totalStepsNumber}
+              totalStepsNumber={totalStepsNumber - 1}
             />
           </div>
 
@@ -71,13 +70,13 @@ export default function Address({
           onClose={() => setIsOpen(false)}
           onSelect={handleAddressSelect}
         />
+      </div>
 
+      <div className="absolute bottom-0 left-0 w-full px-5 py-8">
         <Button
           shape="rectangle"
           variant={isButtonEnabled ? 'filled' : 'disabled'}
-          width="w-full"
-          height="55px"
-          className=""
+          className="w-full h-[55px]"
           onClick={handleNext}
         >
           다음

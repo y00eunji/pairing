@@ -1,6 +1,12 @@
+import ActionModal from '@/components/modal/ActionModal';
+import ListModal from '@/components/modal/ListModal';
+import { useModal } from '@/hooks/useModal';
 import { cn } from '@/utils/cn';
 import formatTime from '@/utils/date';
 import { PropsWithChildren } from 'react';
+import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
+import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
+import MoreIcon from '/public/assets/icons/more_gray_col.svg';
 
 interface Props {
   time: Date;
@@ -14,6 +20,10 @@ export default function ChatBubble({
   isRead = false,
   children,
 }: PropsWithChildren<Props>) {
+  const menuModal = useModal(); // 채팅 삭제/수정 모달
+  const deleteConfirmModal = useModal(); // 채팅 삭제 여부 모달
+  const deleteSuccessModal = useModal(); // 채팅 삭제 완료 모달
+
   return (
     <div className="flex flex-col w-full">
       <div className={cn('max-w-[247px]', isMe && 'self-end')}>
@@ -32,7 +42,7 @@ export default function ChatBubble({
         {/* 채팅 시간, 읽음 표시 */}
         <div
           className={cn(
-            'flex gap-[5px] text-black text-[12px] items-center',
+            'flex gap-[5px] text-black text-[12px] items-center pb-2',
             isMe && 'justify-end',
           )}
         >
@@ -42,8 +52,65 @@ export default function ChatBubble({
           <div className="font-roboto translate-y-[0.5px]">
             {formatTime(time)}
           </div>
+          <button className="px-2" aria-label="더보기">
+            {isMe && <MoreIcon onClick={menuModal.openModal} />}
+          </button>
         </div>
       </div>
+
+      {/* 채팅 삭제 메뉴 모달 */}
+      <ListModal
+        isOpen={menuModal.isOpen}
+        buttonList={[
+          {
+            label: '삭제하기',
+            onClick: () => {
+              menuModal.closeModal();
+              deleteConfirmModal.openModal();
+            },
+            color: 'text-mainPink1',
+          },
+        ]}
+        oneButton={{ label: '취소', onClick: menuModal.closeModal }}
+      />
+
+      {/* 채팅 삭제 여부 모달 */}
+      <ActionModal
+        isOpen={deleteConfirmModal.isOpen}
+        icon={<ExclamationIcon />}
+        message="채팅을 삭제하시겠습니까?"
+        buttons={[
+          {
+            label: '취소',
+            onClick: deleteConfirmModal.closeModal,
+          },
+          {
+            label: '확인',
+            onClick: () => {
+              deleteConfirmModal.closeModal();
+              menuModal.closeModal();
+              deleteSuccessModal.openModal();
+            },
+            className: 'text-mainPink1',
+          },
+        ]}
+      />
+
+      {/* 채팅 삭제 완료 모달 */}
+      <ActionModal
+        isOpen={deleteSuccessModal.isOpen}
+        icon={<CheckIcon />}
+        message="채팅을 삭제했습니다."
+        buttons={[
+          {
+            label: '닫기',
+            onClick: () => {
+              deleteSuccessModal.closeModal();
+            },
+            className: 'w-full',
+          },
+        ]}
+      />
     </div>
   );
 }

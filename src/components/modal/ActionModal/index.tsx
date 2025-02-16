@@ -4,6 +4,7 @@ interface ModalProps {
   isOpen: boolean;
   icon?: React.ReactNode;
   message: string;
+  content?: string;
   buttons: {
     label: string;
     onClick: () => void;
@@ -15,6 +16,7 @@ export default function ActionModal({
   isOpen,
   icon,
   message,
+  content,
   buttons,
 }: ModalProps) {
   if (!isOpen) return null;
@@ -27,6 +29,7 @@ export default function ActionModal({
 
         {/* 메시지 */}
         <p className="font-16-medium py-2">{message}</p>
+        <p className="font-14-regular py-2">{content}</p>
 
         {/* 버튼 영역 */}
         <div className={cn('mt-6 py-2 border-t', buttons.length > 1 && 'flex')}>

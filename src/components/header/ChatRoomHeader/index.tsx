@@ -67,6 +67,7 @@ export default function ChatRoomHeader({
         isOpen={outConfirmModal.isOpen}
         icon={<ExclamationIcon />}
         message="채팅방을 나가시겠습니까?"
+        content="체팅방이 삭제됩니다."
         buttons={[
           {
             label: '취소',

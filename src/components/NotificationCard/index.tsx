@@ -5,7 +5,7 @@ interface NotificationCardProps {
   name: string;
   age: number;
   location: string;
-  time?: string;
+  time: string;
   isRead: boolean;
 }
 export default function NotificationCard({

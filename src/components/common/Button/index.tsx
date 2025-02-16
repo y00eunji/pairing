@@ -31,7 +31,7 @@ export default function Button({
     <button
       type="button"
       className={cn(
-        'font-16-medium flex items-center justify-center',
+        'font-16-medium flex items-center justify-center p-2',
         SHAPES[shape],
         VARIANTS[variant],
         isSelected && 'ring-2 ring-mainPink1',

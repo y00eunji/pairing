@@ -11,6 +11,9 @@ importers:
       '@tanstack/react-query':
         specifier: ^5.65.1
         version: 5.65.1(react@19.0.0)
+      '@toss/use-overlay':
+        specifier: ^1.4.2
+        version: 1.4.2(react@19.0.0)
       axios:
         specifier: ^1.7.9
         version: 1.7.9
@@ -26,6 +29,9 @@ importers:
       tailwind-merge:
         specifier: ^3.0.1
         version: 3.0.1
+      use-overlay:
+        specifier: ^0.0.0
+        version: 0.0.0
       zustand:
         specifier: ^5.0.3
         version: 5.0.3(@types/react@19.0.8)(react@19.0.0)
@@ -998,6 +1004,12 @@ packages:
     resolution: {integrity: sha512-BSpjo4RQdJ75Mw3pqM1AJYNhanNxJE3ct7RmCZUAv9cUJg/Qmonzc/Xy2kKXeQA1InuKATSuc6pOZciWOF8TYQ==}
     peerDependencies:
       react: ^18 || ^19
+
+  '@toss/use-overlay@1.4.2':
+    resolution: {integrity: sha512-OYJKSKkldho8qrJR0xMJLpz85H68+E+y6H3y/N0XUed/b0ytbfU+fuxcPd14uiC8H0xzliTGBlY8GQP9Z/lteQ==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+    peerDependencies:
+      react: ^16.8 || ^17 || ^18
 
   '@trysound/sax@0.2.0':
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -2608,6 +2620,9 @@ packages:
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
 
+  use-overlay@0.0.0:
+    resolution: {integrity: sha512-Tgrd4xlAyUjLkP2/XqiWRjNQXSuRcn4yhtbfm8bXmCyuXG2rdWMcOOgBDQzsduyMU3JqaRxgijeRCF+Kwm8umg==}
+
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
@@ -3716,6 +3731,10 @@ snapshots:
   '@tanstack/react-query@5.65.1(react@19.0.0)':
     dependencies:
       '@tanstack/query-core': 5.65.0
+      react: 19.0.0
+
+  '@toss/use-overlay@1.4.2(react@19.0.0)':
+    dependencies:
       react: 19.0.0
 
   '@trysound/sax@0.2.0': {}
@@ -5623,6 +5642,8 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
+
+  use-overlay@0.0.0: {}
 
   util-deprecate@1.0.2: {}
 

@@ -1,9 +1,11 @@
 import ActionModal from '@/components/modal/ActionModal';
 import ListModal from '@/components/modal/ListModal';
 import { useModal } from '@/hooks/useModal';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+
 import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
 import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
 import BackIcon from '/public/assets/icons/header_back.svg';
@@ -88,7 +90,7 @@ export default function ChatRoomHeader({
       {/* 채팅방 나가기 완료 모달 */}
       <ActionModal
         isOpen={outSuccessModal.isOpen}
-        icon={<CheckIcon />}
+        icon={<CheckIcon fill="#FF85A2" />}
         message="채팅방을 나갔습니다."
         buttons={[
           {

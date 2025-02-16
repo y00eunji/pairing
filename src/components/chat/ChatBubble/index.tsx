@@ -1,9 +1,11 @@
+import type { PropsWithChildren } from 'react';
+
 import ActionModal from '@/components/modal/ActionModal';
 import ListModal from '@/components/modal/ListModal';
 import { useModal } from '@/hooks/useModal';
 import { cn } from '@/utils/cn';
 import formatTime from '@/utils/date';
-import { PropsWithChildren } from 'react';
+
 import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
 import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
 import MoreIcon from '/public/assets/icons/more_gray_col.svg';
@@ -99,7 +101,7 @@ export default function ChatBubble({
       {/* 채팅 삭제 완료 모달 */}
       <ActionModal
         isOpen={deleteSuccessModal.isOpen}
-        icon={<CheckIcon />}
+        icon={<CheckIcon fill="#FF85A2" />}
         message="채팅을 삭제했습니다."
         buttons={[
           {

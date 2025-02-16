@@ -93,11 +93,11 @@ export default function BottomNavBar({ chatNotificationCount = 0 }: Props) {
       // hasNotification: true,
     },
     {
-      href: '#',
+      href: '/mypage',
       icon: <MypageIcon />,
       activeIcon: <MypageActiveIcon />,
       label: '마이프로필',
-      isActive: false,
+      isActive: pathname === '/mypage',
     },
   ];
 

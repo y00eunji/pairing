@@ -10,6 +10,7 @@ interface ModalProps {
     onClick: () => void;
     className?: string;
   }[];
+  description?: string;
 }
 
 export default function ActionModal({
@@ -18,6 +19,7 @@ export default function ActionModal({
   message,
   content,
   buttons,
+  description,
 }: ModalProps) {
   if (!isOpen) return null;
 
@@ -29,7 +31,8 @@ export default function ActionModal({
 
         {/* 메시지 */}
         <p className="font-16-medium py-2">{message}</p>
-        <p className="font-14-regular py-2">{content}</p>
+        {description && <p className="font-14-regular py-2">{description}</p>}
+
 
         {/* 버튼 영역 */}
         <div className={cn('mt-6 py-2 border-t', buttons.length > 1 && 'flex')}>

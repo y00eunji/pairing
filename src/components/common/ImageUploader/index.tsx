@@ -73,7 +73,7 @@ export default function ImageUploader({
         <button
           type="button"
           onClick={onImageDelete}
-          className="absolute -top-2 -right-2 w-6 h-6 bg-white rounded-full flex items-center justify-center shadow-md"
+          className="absolute -top-2 -right-2 rounded-full flex items-center justify-center shadow-md"
         >
           <DeleteImgIcon />
         </button>

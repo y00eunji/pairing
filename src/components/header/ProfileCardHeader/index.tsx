@@ -119,7 +119,7 @@ export default function ProfileCardHeader({
       {/* 신고 완료 모달 */}
       <ActionModal
         isOpen={reportSuccessModal.isOpen}
-        icon={<CheckIcon />}
+        icon={<CheckIcon fill="#FF85A2" />}
         message="신고 되었습니다."
         buttons={[
           {

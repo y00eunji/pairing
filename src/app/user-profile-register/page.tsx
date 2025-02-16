@@ -4,6 +4,7 @@ import FloatingButton from '@/components/common/FloatingButton';
 import ProfileCardHeader from '@/components/header/ProfileCardHeader';
 import ProfileCard from '@/components/ProfileCard';
 import ProfileCardInfoContainer from '@/components/ProfileCardInfoContainer';
+
 import BeerIcon from '/public/assets/icons/profilecard_bottle_pink.svg';
 import HobbyIcon from '/public/assets/icons/profilecard_heart_pink.svg';
 import LocationIcon from '/public/assets/icons/profilecard_location_pink.svg';

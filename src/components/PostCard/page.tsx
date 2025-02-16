@@ -1,5 +1,6 @@
 import formatTime from '@/utils/date';
 import Button from '../common/Button';
+
 import UserProfile from '../profiles/UserProfile';
 import MoreGrayIcon from '/public/assets/icons/more_gray.svg';
 
@@ -27,7 +28,10 @@ export default function PostCard({
   onButtonClick,
 }: PostCardProps) {
   return (
-    <div className="bg-white rounded-lg shadow-md p-1 m-5 items-center">
+    <div
+      className="bg-white rounded-lg p-1 m-5 items-center
+    shadow-[0px_3px_3px_rgba(0,0,0,0.05),_0px_-3px_3px_rgba(0,0,0,0.05),_3px_0px_3px_rgba(0,0,0,0.05),_-3px_0px_3px_rgba(0,0,0,0.05)]"
+    >
       {/* 헤더 */}
       <UserProfile
         name={name}

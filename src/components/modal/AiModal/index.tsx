@@ -1,6 +1,6 @@
-import Button from '@/components/common/Button';
 import { createPortal } from 'react-dom';
 import AiLogoIcon from '/public/assets/icons/ai_letter_logo.svg';
+import DeleteIcon from '/public/assets/icons/delete_gray.svg';
 
 interface AiModalProps {
   isOpen: boolean;
@@ -42,6 +42,10 @@ export default function AiModal({ isOpen, isClose }: AiModalProps) {
           </h2>
         </div>
 
+        <div className="absolute right-0 top-0 m-5 cursor-pointer">
+          <DeleteIcon onClick={isClose} />
+        </div>
+
         {/* 스크롤 가능한 컨텐츠 영역 */}
         <div className="overflow-y-auto max-h-[calc(100vh-280px)]">
           <div className="flex flex-col p-6">
@@ -81,18 +85,6 @@ export default function AiModal({ isOpen, isClose }: AiModalProps) {
               </ul>
             </div>
           </div>
-        </div>
-
-        {/* 닫기 버튼 */}
-        <div className="p-6 bg-white">
-          <Button
-            shape="rectangle"
-            variant="filled"
-            className="w-full py-3"
-            onClick={isClose}
-          >
-            닫기
-          </Button>
         </div>
       </div>
     </div>

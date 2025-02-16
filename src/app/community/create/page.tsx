@@ -3,11 +3,14 @@
 import BottomNavBar from '@/components/BottomNavBar';
 import Button from '@/components/common/Button';
 import ImageUploader from '@/components/common/ImageUploader';
-import ActionModal from '@/components/modal/ActionModal';
 
 import { useModal } from '@/hooks/useModal';
+
 import { useRouter } from 'next/navigation';
+
 import { useState } from 'react';
+
+import ActionModal from '../../../components/modal/ActionModal/index';
 import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
 import BackIcon from '/public/assets/icons/header_back.svg';
 
@@ -43,7 +46,7 @@ export default function PostCreate() {
         isOpen={outModal.isOpen}
         icon={<ExclamationIcon />}
         message="현재 페이지를 나가시겠습니까?"
-        content="작성하신 글이 삭제됩니다."
+        description="작성하신 글이 삭제됩니다."
         buttons={[
           {
             label: '취소',

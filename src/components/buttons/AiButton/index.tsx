@@ -1,5 +1,5 @@
 // AiButton 컴포넌트
-import AiModal from '@/components/modal/\bAiModal';
+import AiModal from '@/components/modal/AiModal';
 import { useModal } from '@/hooks/useModal';
 
 import { useState } from 'react';

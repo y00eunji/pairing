@@ -4,12 +4,16 @@ import BottomNavBar from '@/components/BottomNavBar';
 import PlusButton from '@/components/buttons/PlusButton';
 import Button from '@/components/common/Button';
 import Tab from '@/components/common/Tab';
+import PageHeader from '@/components/header/PageHeader';
 import ActionModal from '@/components/modal/ActionModal';
 import BottomSheetModal from '@/components/modal/BottomSheetModal';
 import ListModal from '@/components/modal/ListModal';
 import PostCard from '@/components/PostCard/page';
+
 import UserProfile from '@/components/profiles/UserProfile';
+
 import { useModal } from '@/hooks/useModal';
+
 import Link from 'next/link';
 import { useState } from 'react';
 import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
@@ -91,9 +95,7 @@ export default function Community() {
 
   return (
     <div className="flex flex-col pb-[70px] h-screen overflow-hidden relative">
-      <div className="px-7 pt-3 py-3">
-        <p className="text-24px font-bold">커뮤니티</p>
-      </div>
+      <PageHeader title="커뮤니티" />
 
       <Tab.Group initialTab="tab1">
         <Tab.Header>
@@ -103,7 +105,7 @@ export default function Community() {
 
         {/* 글 목록 */}
         <Tab.Content value="tab1">
-          <div className="flex flex-col pb-[200px] h-screen flex-grow overflow-y-auto">
+          <div className="flex flex-col pb-[200px] h-screen flex-grow overflow-y-auto bg-[#f9f9f9]">
             {posts.map((item, index) => (
               <PostCard
                 key={index}
@@ -173,7 +175,6 @@ export default function Community() {
               {
                 label: '확인',
                 onClick: () => {
-                  console.log('신고 처리 완료:', reportMessage);
                   reportConfirmModal.closeModal();
                   reportModal.closeModal();
                   reportSuccessModal.openModal();
@@ -186,7 +187,7 @@ export default function Community() {
           {/* 신고 완료 모달 */}
           <ActionModal
             isOpen={reportSuccessModal.isOpen}
-            icon={<CheckIcon />}
+            icon={<CheckIcon fill="#FF85A2" />}
             message="신고 되었습니다."
             buttons={[
               {
@@ -209,7 +210,7 @@ export default function Community() {
         {/* 내가 쓴 글 목록 */}
         <Tab.Content value="tab2">
           {myPosts.length > 0 ? (
-            <div className="flex flex-col pb-[200px] h-screen flex-grow overflow-y-auto">
+            <div className="flex flex-col pb-[200px] h-screen flex-grow overflow-y-auto bg-[#f9f9f9]">
               {/* 내가 작성한 글 있을 때 */}
               {myPosts.map((item, index) => (
                 <PostCard
@@ -332,7 +333,7 @@ export default function Community() {
           {/* 삭제 완료 모달 */}
           <ActionModal
             isOpen={deleteSuccessModal.isOpen}
-            icon={<CheckIcon />}
+            icon={<CheckIcon fill="#FF85A2" />}
             message="삭제 되었습니다."
             buttons={[
               {

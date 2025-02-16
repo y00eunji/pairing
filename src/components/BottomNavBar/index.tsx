@@ -24,7 +24,6 @@ interface NavItemProps {
   label?: React.ReactNode;
   activeIcon: React.ReactNode;
   isActive: boolean;
-  // hasNotification?: boolean;
   notificationCount?: number;
 }
 
@@ -34,7 +33,6 @@ const NavItem: React.FC<NavItemProps> = ({
   label,
   activeIcon,
   isActive,
-  // hasNotification,
   notificationCount,
 }) => (
   <Link
@@ -50,9 +48,6 @@ const NavItem: React.FC<NavItemProps> = ({
         </span>
       </div>
     )}
-    {/* {hasNotification && (
-      <span className="absolute -top-1 -right-2 w-1.5 h-1.5 bg-mainPink1 rounded-full" />
-    )} */}
     {isActive ? activeIcon : icon}
     <span className="text-[12px] mt-1">{label}</span>
   </Link>
@@ -85,12 +80,11 @@ export default function BottomNavBar({ chatNotificationCount = 0 }: Props) {
       isActive: pathname === '/community' || pathname === '/community/create',
     },
     {
-      href: '#',
+      href: '/notifications',
       icon: <NotificationIcon />,
       activeIcon: <NotificationActiveIcon />,
       label: '알림',
-      isActive: false,
-      // hasNotification: true,
+      isActive: pathname === '/notifications',
     },
     {
       href: '/mypage',
@@ -103,13 +97,15 @@ export default function BottomNavBar({ chatNotificationCount = 0 }: Props) {
 
   return (
     <div className="w-full">
-      <nav className="bg-white py-3 rounded-tr-3xl rounded-tl-3xl shadow-[0px_-3px_3px_rgba(0,0,0,0.01)]">
-        <div className="flex justify-around items-center">
-          {navItems.map((item, index) => (
-            <NavItem key={index} {...item} />
-          ))}
-        </div>
-      </nav>
+      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[520px]">
+        <nav className="bg-white py-3 rounded-tr-3xl rounded-tl-3xl shadow-[0px_-3px_3px_rgba(0,0,0,0.01)]">
+          <div className="flex justify-around items-center">
+            {navItems.map((item, index) => (
+              <NavItem key={index} {...item} />
+            ))}
+          </div>
+        </nav>
+      </div>
     </div>
   );
 }

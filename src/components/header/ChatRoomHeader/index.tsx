@@ -26,7 +26,7 @@ export default function ChatRoomHeader({
   const outSuccessModal = useModal(); // 채팅방 나가기 완료 모달
 
   return (
-    <div className="flex items-center p-4 bg-white shadow-md">
+    <div className="flex items-center p-4 bg-white shadow-[0px_3px_3px_rgba(0,0,0,0.05)]">
       <Link href="/chat">
         <button className="mr-5" aria-label="채팅방 목록">
           <BackIcon />
@@ -69,7 +69,7 @@ export default function ChatRoomHeader({
         isOpen={outConfirmModal.isOpen}
         icon={<ExclamationIcon />}
         message="채팅방을 나가시겠습니까?"
-        content="체팅방이 삭제됩니다."
+        description="체팅방이 삭제됩니다."
         buttons={[
           {
             label: '취소',

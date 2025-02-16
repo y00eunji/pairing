@@ -17,7 +17,14 @@ const keywords = [
   { icon: <BeerIcon />, title: '음주 스타일' },
 ];
 
-const profileCardList = [
+// 추천 리스트
+const recommendationList = [
+  { name: '김이름', age: '20', location: '서울시 용산구' },
+  { name: '김이름', age: '20', location: '서울시 용산구' },
+];
+
+// 맞춤 추천 리스트
+const keywordRecommendationList = [
   { name: '김이름', age: '20', location: '서울시 용산구' },
   { name: '김이름', age: '20', location: '서울시 용산구' },
 ];
@@ -34,9 +41,10 @@ export default function MainPage() {
                 <LogoIcon />
               </Link>
             </div>
+
             {/* 프로필카드 영역 */}
-            <div className="flex flex-col items-center gap-3">
-              {profileCardList.map((item, index) => (
+            <div className="flex flex-col items-center gap-5">
+              {recommendationList.map((item, index) => (
                 <ProfileCard
                   key={index}
                   name={item.name}
@@ -54,12 +62,24 @@ export default function MainPage() {
               <KeywordRecommendation keywords={keywords} />
             </div>
           </div>
+
+          <div className="flex flex-col pt-8">
+            <div className="flex flex-col items-center gap-5">
+              {keywordRecommendationList &&
+                keywordRecommendationList.map((item, index) => (
+                  <ProfileCard
+                    key={index}
+                    name={item.name}
+                    age={item.age}
+                    location={item.location}
+                  />
+                ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[520px]">
-        <BottomNavBar />
-      </div>
+      <BottomNavBar />
     </div>
   );
 }

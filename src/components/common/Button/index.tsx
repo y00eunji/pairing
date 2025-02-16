@@ -4,7 +4,7 @@ import { cn } from '@/utils/cn';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   shape: 'rectangle' | 'circle';
-  variant: 'filled' | 'outline' | 'disabled';
+  variant: 'filled' | 'outline' | 'disabled' | 'disabledColor';
   isSelected?: boolean;
 }
 
@@ -17,6 +17,7 @@ const VARIANTS = {
   filled: 'bg-gradient-to-r from-mainPink1 to-mainPink2 text-white',
   outline: 'border-2 text-mainPink1 border-mainPink1',
   disabled: 'border-2 text-gray1 border-gray-1',
+  disabledColor: 'text-white bg-gray2',
 };
 
 export default function Button({

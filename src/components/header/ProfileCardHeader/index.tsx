@@ -1,5 +1,6 @@
 import ActionModal from '@/components/modal/ActionModal';
 import ListModal from '@/components/modal/ListModal';
+import { useRouter } from 'next/navigation';
 
 import { useModal } from '@/hooks/useModal';
 
@@ -8,6 +9,7 @@ import { useState } from 'react';
 import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
 import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
 import FaceAuthIcon from '/public/assets/icons/face_auth.svg';
+import BackIcon from '/public/assets/icons/header_back.svg';
 import MoreBlackIcon from '/public/assets/icons/more_black.svg';
 
 interface ProfileCardHeaderProps {
@@ -19,6 +21,8 @@ export default function ProfileCardHeader({
   name,
   age,
 }: ProfileCardHeaderProps) {
+  const router = useRouter();
+
   const checkModal = useModal(); // 신고/차단 체크 모달
   const reportModal = useModal(); // 신고하기 상세 모달
   const blockCheckModal = useModal(); // 차단 여부 확인 모달
@@ -36,15 +40,26 @@ export default function ProfileCardHeader({
   };
 
   return (
-    <div className="m-7">
+    <div className="m-1">
       <div className="flex items-center">
+        <button
+          className="mr-5"
+          aria-label="이전 페이지"
+          onClick={() => router.back()}
+        >
+          <BackIcon />
+        </button>
         <div className="flex items-center space-x-3">
           <span className="text-20px font-semiBold">{name}</span>
           <span className="text-20px font-semiBold">{age}</span>
           <FaceAuthIcon />
         </div>
 
-        <button className="ml-auto" onClick={checkModal.openModal}>
+        <button
+          className="ml-auto"
+          aria-label="더보기"
+          onClick={checkModal.openModal}
+        >
           <MoreBlackIcon />
         </button>
       </div>

@@ -2,8 +2,11 @@
 
 import BottomNavBar from '@/components/BottomNavBar';
 import ChatListItem from '@/components/chat/ChatListItem';
-import SearchInput from '@/components/SearchInput';
+import PageHeader from '@/components/header/PageHeader';
+
 import { useRouter } from 'next/navigation';
+
+import SearchInput from '@/components/SearchInput';
 
 export default function Chat() {
   const router = useRouter();
@@ -59,9 +62,8 @@ export default function Chat() {
 
   return (
     <div className="flex flex-col pb-[70px] h-screen">
-      <div className="px-7 pt-3">
-        <p className="text-24px font-bold">채팅</p>
-      </div>
+      <PageHeader title="채팅" />
+
       <div className="p-5">
         <SearchInput />
       </div>

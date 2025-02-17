@@ -14,11 +14,11 @@ import UserProfile from '@/components/profiles/UserProfile';
 
 import { useModal } from '@/hooks/useModal';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
 import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
-import GrayLogoIcon from '/public/assets/icons/pairing_logo_gray.svg';
 
 export default function Community() {
   const reportcheckModal = useModal(); // 신고 체크 모달
@@ -67,16 +67,16 @@ export default function Community() {
 
   // 내가 쓴 글 목록
   const myPosts = [
-    {
-      name: '김이름',
-      age: 20,
-      location: '서울시',
-      imageUrl:
-        'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
-      content:
-        '글 내용 가나다라마바사 아자차카타파하 가나 다라 마바사 아자차카 타파하 가나다라마 바사 아자차카 타파하가 나다라마바사.',
-      createdAt: new Date(),
-    },
+    // {
+    //   name: '김이름',
+    //   age: 20,
+    //   location: '서울시',
+    //   imageUrl:
+    //     'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    //   content:
+    //     '글 내용 가나다라마바사 아자차카타파하 가나 다라 마바사 아자차카 타파하 가나다라마 바사 아자차카 타파하가 나다라마바사.',
+    //   createdAt: new Date(),
+    // },
   ];
 
   // 저요 목록
@@ -268,8 +268,13 @@ export default function Community() {
           ) : (
             <div className="flex flex-col items-center justify-center h-full">
               {/* 내가 작성한 글 없을 때 */}
-              <div className="pb-10">
-                <GrayLogoIcon />
+              <div className="flex flex-col items-center w-full h-[50%] justify-center">
+                <Image
+                  src="/images/logo_gray.png"
+                  alt="내가 작성한 글 없을 때 페이지 로고"
+                  width={335}
+                  height={335}
+                />
               </div>
               <div className="flex flex-col items-center justify-center pb-4">
                 <p className="font-18-medium text-gray1 py-1">

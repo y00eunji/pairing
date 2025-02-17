@@ -19,6 +19,9 @@ const noto = Noto_Sans_KR({
 export const metadata: Metadata = {
   title: 'pAIring',
   description: 'pAIring',
+  icons: {
+    icon: '/images/favicon_pairing.png',
+  },
 };
 
 export default function RootLayout({

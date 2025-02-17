@@ -1,7 +1,7 @@
 import BottomNavBar from '@/components/BottomNavBar';
 import PageHeader from '@/components/header/PageHeader';
 import NotificationCard from '@/components/NotificationCard';
-import LogoIcon from '/public/assets/icons/pairing_logo_gray.svg';
+import Image from 'next/image';
 
 // 날짜를 "YYYY.MM.DD" 형식으로 변환하는 함수
 const formatDate = (date: Date) => {
@@ -50,11 +50,16 @@ export default function Notifications() {
         <PageHeader title="알림" />
       </div>
 
-      <div className="flex flex-col h-screen  bg-[#f9f9f9]">
+      <div className="flex flex-col h-screen bg-[#f9f9f9]">
         {isEmpty ? (
           //  알림이 없을 때의 화면
-          <div className="flex-1 flex flex-col items-center justify-center">
-            <LogoIcon />
+          <div className="flex flex-col items-center w-full justify-center">
+            <Image
+              src="/images/logo_gray.png"
+              alt="알림이 없을 때 페이지 로고"
+              width={335}
+              height={335}
+            />
             <p className="font-18-medium text-gray1">새로운 알림이 없습니다.</p>
           </div>
         ) : (

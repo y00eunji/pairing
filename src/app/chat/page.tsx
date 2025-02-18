@@ -1,11 +1,10 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import BottomNavBar from '@/components/BottomNavBar';
 import ChatListItem from '@/components/chat/ChatListItem';
 import PageHeader from '@/components/header/PageHeader';
-
-import { useRouter } from 'next/navigation';
-
 import SearchInput from '@/components/SearchInput';
 
 export default function Chat() {

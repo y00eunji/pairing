@@ -19,14 +19,47 @@ const keywords = [
 
 // 추천 리스트
 const recommendationList = [
-  { name: '김이름', age: '20', location: '서울시 용산구' },
-  { name: '김이름', age: '20', location: '서울시 용산구' },
+  {
+    name: '김이름',
+    age: '20',
+    location: '서울시 용산구',
+    // images: [
+    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    // ],
+  },
+  {
+    name: '김이름',
+    age: '20',
+    location: '서울시 강남구',
+    // images: [
+    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    // ],
+  },
 ];
 
 // 맞춤 추천 리스트
 const keywordRecommendationList = [
-  { name: '김이름', age: '20', location: '서울시 용산구' },
-  { name: '김이름', age: '20', location: '서울시 용산구' },
+  {
+    name: '김이름',
+    age: '20',
+    location: '서울시 용산구',
+    // images: [
+    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    // ],
+  },
+  {
+    name: '김이름',
+    age: '20',
+    location: '서울시 중구',
+    // images: [
+    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    // ],
+  },
 ];
 
 export default function MainPage() {
@@ -50,6 +83,7 @@ export default function MainPage() {
                   name={item.name}
                   age={item.age}
                   location={item.location}
+                  // images={item.images}
                 />
               ))}
             </div>
@@ -65,15 +99,15 @@ export default function MainPage() {
 
           <div className="flex flex-col pt-8">
             <div className="flex flex-col items-center gap-5">
-              {keywordRecommendationList &&
-                keywordRecommendationList.map((item, index) => (
-                  <ProfileCard
-                    key={index}
-                    name={item.name}
-                    age={item.age}
-                    location={item.location}
-                  />
-                ))}
+              {keywordRecommendationList.map((item, index) => (
+                <ProfileCard
+                  key={index}
+                  name={item.name}
+                  age={item.age}
+                  location={item.location}
+                  // images={item.images}
+                />
+              ))}
             </div>
           </div>
         </div>

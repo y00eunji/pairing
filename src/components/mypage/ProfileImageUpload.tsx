@@ -9,7 +9,7 @@ import DefaultImage from '/public/assets/icons/default_image.svg';
 import MyprofileUploadIcon from '/public/assets/icons/myprofile_upload.svg';
 
 export default function ProfileImageUpload() {
-  const [imageUrl, setImageUrl] = useState(''); // TODO : 서버에서 이미지 받을 예정
+  const [imageUrl] = useState(''); // TODO: 서버에서 이미지 받을 예정
   const router = useRouter();
 
   const handleImageUpload = () => {
@@ -20,7 +20,6 @@ export default function ProfileImageUpload() {
     <div className="w-full flex justify-center items-center mt-10">
       <div className="relative w-44 h-44">
         <div className="relative w-44 h-44 rounded-full overflow-hidden bg-gray3 flex items-center justify-center">
-          {/* 사진은 반드시 있어야 해서 나중에 로직 수정필요 */}
           {imageUrl ? (
             <Image
               src={imageUrl}

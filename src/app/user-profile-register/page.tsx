@@ -2,13 +2,18 @@
 
 import FloatingButton from '@/components/common/FloatingButton';
 import ProfileCardHeader from '@/components/header/ProfileCardHeader';
-import ProfileCard from '@/components/ProfileCard';
 import ProfileCardInfoContainer from '@/components/ProfileCardInfoContainer';
 
 import BeerIcon from '/public/assets/icons/profilecard_bottle_pink.svg';
 import HobbyIcon from '/public/assets/icons/profilecard_heart_pink.svg';
 import LocationIcon from '/public/assets/icons/profilecard_location_pink.svg';
 import PerconalityIcon from '/public/assets/icons/profilecard_user_pink.svg';
+
+import {
+  Carousel,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/Carousel';
 
 export default function UserProfileRegister() {
   const profile = {
@@ -63,7 +68,25 @@ export default function UserProfileRegister() {
 
       {/* ProfileCard를 가운데 정렬 */}
       <div className="flex justify-center my-4">
-        <ProfileCard />
+        {/* 이미지 캐러셀 */}
+        <Carousel>
+          {/* 삭제 하면 안됨 */}
+
+          {/* <CarouselContent>
+                  {images.map((imgUrl, index) => (
+                    <CarouselItem key={index}>
+                      <Image
+                        src={imgUrl}
+                        alt={`Profile image ${index + 1}`}
+                        className="object-cover w-full h-full"
+                      />
+                    </CarouselItem>
+                  ))}
+                </CarouselContent> */}
+          {/* 좌우 이동 버튼 */}
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
 
       <div className="flex flex-col gap-y-8">

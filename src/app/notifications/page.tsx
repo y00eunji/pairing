@@ -1,7 +1,8 @@
+import Image from 'next/image';
+
 import BottomNavBar from '@/components/BottomNavBar';
 import PageHeader from '@/components/header/PageHeader';
 import NotificationCard from '@/components/NotificationCard';
-import Image from 'next/image';
 
 // 날짜를 "YYYY.MM.DD" 형식으로 변환하는 함수
 const formatDate = (date: Date) => {

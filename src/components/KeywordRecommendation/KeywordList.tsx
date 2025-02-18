@@ -3,9 +3,10 @@
 import { useModal } from '@/hooks/useModal';
 
 import { useState } from 'react';
-import Button from '../common/Button';
 
+import Button from '../common/Button';
 import ActionModal from '../modal/ActionModal';
+
 import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
 import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
 
@@ -21,7 +22,6 @@ export default function KeywordList({ keywords }: KeywordListProps) {
 
   // 상태들
   const [keywordMessage, setKeywordMessage] = useState('');
-  const [selectedKeyword, setSelectedKeyword] = useState<string | null>(null);
   // "모든 버튼을 이미 눌렀는지" 여부 (true면 모든 버튼 비활성화)
   const [hasUsed, setHasUsed] = useState(false);
 
@@ -35,7 +35,6 @@ export default function KeywordList({ keywords }: KeywordListProps) {
     }
 
     // 아직 한 번도 안 눌렀다면 확인 모달 열기
-    setSelectedKeyword(keyword);
     setKeywordMessage(`${keyword} 키워드의 맞춤 추천을 받으시겠습니까?`);
     checkModal.openModal();
   };

@@ -1,6 +1,6 @@
-import { cn } from '@/utils/cn';
-
 import Image from 'next/image';
+
+import { cn } from '@/utils/cn';
 
 interface ProfileImageProps {
   src: string;

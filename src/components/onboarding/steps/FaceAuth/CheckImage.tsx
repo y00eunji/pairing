@@ -10,7 +10,7 @@ import Title from '../../Title';
 
 export default function CheckImage({ onPrev, onNext }: StepChildProps) {
   // TODO : 로딩 상태에 따라 버튼 활성화
-  const [loading, setLoading] = useState(true);
+  const [loading] = useState(true);
 
   return (
     <div className="relative h-[100dvh]">

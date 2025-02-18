@@ -65,9 +65,9 @@ export default function PrivacyConsent() {
               </div>
 
               <div className="font-14-regular">
-                본인은 pAIring (이하 "페어링")이 제공하는 AI 기반 데이팅 서비스
-                이용과 관련하여, 개인정보 보호법 제15조 및 제17조, 제22조,
-                제24조에 따라 아래의 내용을 충분히 숙지하였으며, 이에
+                본인은 pAIring (이하 &quot;서비스&quot;)이 제공하는 AI 기반
+                데이팅 서비스 이용과 관련하여, 개인정보 보호법 제15조 및 제17조,
+                제22조, 제24조에 따라 아래의 내용을 충분히 숙지하였으며, 이에
                 동의합니다.
               </div>
             </div>

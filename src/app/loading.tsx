@@ -1,8 +1,10 @@
 'use client';
 
-import { Progress } from '@/components/Progress';
-import Image from 'next/image';
 import * as React from 'react';
+
+import Image from 'next/image';
+
+import { Progress } from '@/components/Progress';
 
 export default function Loading() {
   const [progress, setProgress] = React.useState(0);

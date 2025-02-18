@@ -1,7 +1,10 @@
-import formatTime from '@/utils/date';
-import Button from '../common/Button';
+import Image from 'next/image';
 
+import formatTime from '@/utils/date';
+
+import Button from '../common/Button';
 import UserProfile from '../profiles/UserProfile';
+
 import MoreGrayIcon from '/public/assets/icons/more_gray.svg';
 
 interface PostCardProps {
@@ -54,7 +57,7 @@ export default function PostCard({
           <p className="font-16-regular py-1">{content}</p>
           {/* 이미지 내용 */}
           {imageUrl && (
-            <img
+            <Image
               src={imageUrl}
               alt="게시글 image"
               className="mt-2 w-full object-cover"

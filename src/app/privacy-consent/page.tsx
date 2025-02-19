@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import BackIcon from '/public/assets/icons/back_icon.svg';
+import BackIcon from '/src/assets/icons/back_icon.svg';
 
 import Button from '@/components/common/Button';
 import Title from '@/components/onboarding/Title';

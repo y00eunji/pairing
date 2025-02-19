@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 
 import { useState } from 'react';
 
-import BackIcon from '/public/assets/icons/header_back.svg';
+import BackIcon from '/src/assets/icons/header_back.svg';
 
 export default function PostEdit() {
   const [content, setContent] = useState(''); // 글자 수 상태 관리

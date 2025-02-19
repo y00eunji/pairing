@@ -2,11 +2,11 @@ import Input from '@/components/common/Input';
 
 import { useState } from 'react';
 
-import MenuButtonIcon from '/public/assets/icons/chat_menu_button.svg';
-import CameraIcon from '/public/assets/icons/chat_menu_camera.svg';
-import EmojiIcon from '/public/assets/icons/chat_menu_emoji.svg';
-import PictureIcon from '/public/assets/icons/chat_menu_picture.svg';
-import SendingButtonIcon from '/public/assets/icons/chat_send_button.svg';
+import MenuButtonIcon from '/src/assets/icons/chat_menu_button.svg';
+import CameraIcon from '/src/assets/icons/chat_menu_camera.svg';
+import EmojiIcon from '/src/assets/icons/chat_menu_emoji.svg';
+import PictureIcon from '/src/assets/icons/chat_menu_picture.svg';
+import SendingButtonIcon from '/src/assets/icons/chat_send_button.svg';
 
 interface Props {
   onSendMessage: () => void;

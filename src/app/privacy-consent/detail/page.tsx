@@ -6,7 +6,7 @@ import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import BackIcon from '/public/assets/icons/back_icon.svg';
+import BackIcon from '/src/assets/icons/back_icon.svg';
 
 import terms2Img from '@/assets/images/terms-2.png';
 import terms3Img from '@/assets/images/terms-3.png';

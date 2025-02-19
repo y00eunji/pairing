@@ -4,7 +4,7 @@ import { useModal } from '@/hooks/useModal';
 
 import { useState } from 'react';
 
-import AiLogoIcon from '/public/assets/icons/ai_circle_logo.svg';
+import AiLogoIcon from '/src/assets/icons/ai_circle_logo.svg';
 
 export default function AiButton() {
   const aiModal = useModal();

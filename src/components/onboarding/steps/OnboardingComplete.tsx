@@ -7,7 +7,7 @@ import type { StepChildProps } from '@/hooks/useFunnel';
 
 import Title from '../Title';
 
-import BackIcon from '/public/assets/icons/back_icon.svg';
+import BackIcon from '/src/assets/icons/back_icon.svg';
 
 export default function OnboardingComplete({ onPrev }: StepChildProps) {
   const router = useRouter();

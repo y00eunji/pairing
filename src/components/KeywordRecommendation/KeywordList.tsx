@@ -7,8 +7,8 @@ import { useState } from 'react';
 import Button from '../common/Button';
 import ActionModal from '../modal/ActionModal';
 
-import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
-import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
+import CheckIcon from '/src/assets/icons/alert_checkMark.svg';
+import ExclamationIcon from '/src/assets/icons/alert_exclamationMark.svg';
 
 interface KeywordListProps {
   keywords: { icon: React.ReactNode; title: string }[];

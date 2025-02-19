@@ -1,5 +1,5 @@
-import FloatingDirectIcon from '/public/assets/icons/floating_direct.svg';
-import FloatingHeartIcon from '/public/assets/icons/floating_heart.svg';
+import FloatingDirectIcon from '/src/assets/icons/floating_direct.svg';
+import FloatingHeartIcon from '/src/assets/icons/floating_heart.svg';
 
 interface Props {
   onClickDirect: () => void;

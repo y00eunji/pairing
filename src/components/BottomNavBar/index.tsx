@@ -3,16 +3,16 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import ChatIcon from '/public/assets/icons/navBar_chat.svg';
-import ChatActiveIcon from '/public/assets/icons/navBar_chat_active.svg';
-import CommunityIcon from '/public/assets/icons/navBar_community.svg';
-import CommunityActiveIcon from '/public/assets/icons/navBar_community_active.svg';
-import HomeIcon from '/public/assets/icons/navBar_home.svg';
-import HomeActiveIcon from '/public/assets/icons/navBar_home_active.svg';
-import MypageIcon from '/public/assets/icons/navBar_mypage.svg';
-import MypageActiveIcon from '/public/assets/icons/navBar_mypage_active.svg';
-import NotificationIcon from '/public/assets/icons/navBar_notification.svg';
-import NotificationActiveIcon from '/public/assets/icons/navBar_notification_active.svg';
+import ChatIcon from '/src/assets/icons/navBar_chat.svg';
+import ChatActiveIcon from '/src/assets/icons/navBar_chat_active.svg';
+import CommunityIcon from '/src/assets/icons/navBar_community.svg';
+import CommunityActiveIcon from '/src/assets/icons/navBar_community_active.svg';
+import HomeIcon from '/src/assets/icons/navBar_home.svg';
+import HomeActiveIcon from '/src/assets/icons/navBar_home_active.svg';
+import MypageIcon from '/src/assets/icons/navBar_mypage.svg';
+import MypageActiveIcon from '/src/assets/icons/navBar_mypage_active.svg';
+import NotificationIcon from '/src/assets/icons/navBar_notification.svg';
+import NotificationActiveIcon from '/src/assets/icons/navBar_notification_active.svg';
 
 interface Props {
   chatNotificationCount?: number;

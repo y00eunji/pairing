@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
-import BackIcon from '/public/assets/icons/back_icon.svg';
+import BackIcon from '/src/assets/icons/back_icon.svg';
 
 import AddressOption from '@/components/common/AddressOption';
 import ChipButton from '@/components/common/ChipButton';

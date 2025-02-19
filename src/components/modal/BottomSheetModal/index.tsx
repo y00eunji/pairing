@@ -1,4 +1,4 @@
-import DeleteIcon from '/public/assets/icons/delete_gray.svg';
+import DeleteIcon from '/src/assets/icons/delete_gray.svg';
 
 interface BottomSheetModalProps {
   isOpen: boolean;

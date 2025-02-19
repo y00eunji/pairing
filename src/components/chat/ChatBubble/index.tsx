@@ -6,9 +6,9 @@ import { useModal } from '@/hooks/useModal';
 import { cn } from '@/utils/cn';
 import formatTime from '@/utils/date';
 
-import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
-import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
-import MoreIcon from '/public/assets/icons/more_gray_col.svg';
+import CheckIcon from '/src/assets/icons/alert_checkMark.svg';
+import ExclamationIcon from '/src/assets/icons/alert_exclamationMark.svg';
+import MoreIcon from '/src/assets/icons/more_gray_col.svg';
 
 interface Props {
   time: Date;

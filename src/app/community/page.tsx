@@ -19,8 +19,8 @@ import { useRouter } from 'next/navigation';
 
 import { useState } from 'react';
 
-import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
-import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
+import CheckIcon from '/src/assets/icons/alert_checkMark.svg';
+import ExclamationIcon from '/src/assets/icons/alert_exclamationMark.svg';
 
 export default function Community() {
   const router = useRouter();

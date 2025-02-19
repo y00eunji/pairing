@@ -7,11 +7,11 @@ import { useModal } from '@/hooks/useModal';
 
 import { useState } from 'react';
 
-import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
-import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
-import FaceAuthIcon from '/public/assets/icons/face_auth.svg';
-import BackIcon from '/public/assets/icons/header_back.svg';
-import MoreBlackIcon from '/public/assets/icons/more_black.svg';
+import CheckIcon from '/src/assets/icons/alert_checkMark.svg';
+import ExclamationIcon from '/src/assets/icons/alert_exclamationMark.svg';
+import FaceAuthIcon from '/src/assets/icons/face_auth.svg';
+import BackIcon from '/src/assets/icons/header_back.svg';
+import MoreBlackIcon from '/src/assets/icons/more_black.svg';
 
 interface ProfileCardHeaderProps {
   name: string;

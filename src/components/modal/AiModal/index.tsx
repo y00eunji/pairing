@@ -1,7 +1,7 @@
 import { createPortal } from 'react-dom';
 
-import AiLogoIcon from '/public/assets/icons/ai_letter_logo.svg';
-import DeleteIcon from '/public/assets/icons/delete_gray.svg';
+import AiLogoIcon from '/src/assets/icons/ai_letter_logo.svg';
+import DeleteIcon from '/src/assets/icons/delete_gray.svg';
 
 interface AiModalProps {
   isOpen: boolean;

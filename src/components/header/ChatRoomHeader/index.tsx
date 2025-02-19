@@ -6,10 +6,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
-import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
-import BackIcon from '/public/assets/icons/header_back.svg';
-import MoreGrayIcon from '/public/assets/icons/more_gray.svg';
+import CheckIcon from '/src/assets/icons/alert_checkMark.svg';
+import ExclamationIcon from '/src/assets/icons/alert_exclamationMark.svg';
+import BackIcon from '/src/assets/icons/header_back.svg';
+import MoreGrayIcon from '/src/assets/icons/more_gray.svg';
 
 interface ChatRoomHeaderProps {
   profileImage: string;

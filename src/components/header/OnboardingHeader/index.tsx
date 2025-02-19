@@ -2,7 +2,7 @@ import StageIndicator from '@/components/onboarding/StageIndicator';
 import ProgressBar from '@/components/ProgressBar';
 import { useOnboarding } from '@/contexts/OnboardingContext';
 
-import BackIcon from '/public/assets/icons/back_icon.svg';
+import BackIcon from '/src/assets/icons/back_icon.svg';
 
 interface Props {
   onPrev?: () => void;

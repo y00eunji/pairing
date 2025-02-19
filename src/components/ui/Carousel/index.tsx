@@ -6,8 +6,8 @@ import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from 'embla-carousel-react';
 
-import RightIcon from '/public/assets/icons/profile_next_gray.svg';
-import LeftIcon from '/public/assets/icons/profile_prev_gray.svg';
+import RightIcon from '/src/assets/icons/profile_next_gray.svg';
+import LeftIcon from '/src/assets/icons/profile_prev_gray.svg';
 
 import { cn } from '@/lib/utils';
 

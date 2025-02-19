@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import Button from '@/components/common/Button';
 import ImageUploader from '@/components/common/ImageUploader';
 
-import BackIcon from '/public/assets/icons/back_icon.svg';
+import BackIcon from '/src/assets/icons/back_icon.svg';
 
 export default function EditImage() {
   const router = useRouter();

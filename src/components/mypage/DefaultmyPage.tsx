@@ -10,13 +10,13 @@ import Button from '../common/Button';
 import ActionModal from '../modal/ActionModal';
 import ProfileImageUpload from './ProfileImageUpload';
 
-import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
-import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
-import NameStarIcon from '/public/assets/icons/name_star.svg';
-import BeerIcon from '/public/assets/icons/profilecard_bottle_pink.svg';
-import HobbyIcon from '/public/assets/icons/profilecard_heart_pink.svg';
-import LocationIcon from '/public/assets/icons/profilecard_location_pink.svg';
-import PerconalityIcon from '/public/assets/icons/profilecard_user_pink.svg';
+import CheckIcon from '/src/assets/icons/alert_checkMark.svg';
+import ExclamationIcon from '/src/assets/icons/alert_exclamationMark.svg';
+import NameStarIcon from '/src/assets/icons/name_star.svg';
+import BeerIcon from '/src/assets/icons/profilecard_bottle_pink.svg';
+import HobbyIcon from '/src/assets/icons/profilecard_heart_pink.svg';
+import LocationIcon from '/src/assets/icons/profilecard_location_pink.svg';
+import PerconalityIcon from '/src/assets/icons/profilecard_user_pink.svg';
 
 interface DefaultInfoProps {
   name: string;

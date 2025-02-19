@@ -1,6 +1,6 @@
 'use client';
 
-import ResetIcon from '/public/assets/icons/text_reset.svg';
+import ResetIcon from '/src/assets/icons/text_reset.svg';
 
 import Button from '@/components/common/Button';
 import OnboardingHeader from '@/components/header/OnboardingHeader';

@@ -5,8 +5,8 @@ import { useRef } from 'react';
 
 import Image from 'next/image';
 
-import DeleteImgIcon from '/public/assets/icons/delete_img.svg';
-import ImagePlusIcon from '/public/assets/icons/image_plus.svg';
+import DeleteImgIcon from '/src/assets/icons/delete_img.svg';
+import ImagePlusIcon from '/src/assets/icons/image_plus.svg';
 
 import { cn } from '@/utils/cn';
 

@@ -6,9 +6,9 @@ import formatTime from '@/utils/date';
 import ProfileImage from '../common/ProfileImage';
 import ActionModal from '../modal/ActionModal';
 
-import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
-import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
-import DeleteIcon from '/public/assets/icons/delete_small_gray.svg';
+import CheckIcon from '/src/assets/icons/alert_checkMark.svg';
+import ExclamationIcon from '/src/assets/icons/alert_exclamationMark.svg';
+import DeleteIcon from '/src/assets/icons/delete_small_gray.svg';
 
 interface NotificationCardProps {
   profileImg?: React.ReactNode;

@@ -2,7 +2,7 @@ import Button from '@/components/common/Button';
 import OnboardingHeader from '@/components/header/OnboardingHeader';
 import type { StepChildProps } from '@/hooks/useFunnel';
 
-import CheckIcon from '/public/assets/icons/alert_checkMark.svg';
+import CheckIcon from '/src/assets/icons/alert_checkMark.svg';
 
 import Title from '../../Title';
 

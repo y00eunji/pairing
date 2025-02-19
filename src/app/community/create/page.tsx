@@ -11,8 +11,8 @@ import { useState } from 'react';
 
 import ActionModal from '../../../components/modal/ActionModal/index';
 
-import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
-import BackIcon from '/public/assets/icons/header_back.svg';
+import ExclamationIcon from '/src/assets/icons/alert_exclamationMark.svg';
+import BackIcon from '/src/assets/icons/header_back.svg';
 
 export default function PostCreate() {
   const [content, setContent] = useState(''); // 글자 수 상태 관리

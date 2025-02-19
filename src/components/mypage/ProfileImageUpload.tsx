@@ -5,8 +5,8 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import DefaultImage from '/public/assets/icons/default_image.svg';
-import MyprofileUploadIcon from '/public/assets/icons/myprofile_upload.svg';
+import DefaultImage from '/src/assets/icons/default_image.svg';
+import MyprofileUploadIcon from '/src/assets/icons/myprofile_upload.svg';
 
 export default function ProfileImageUpload() {
   const [imageUrl] = useState(''); // TODO: 서버에서 이미지 받을 예정

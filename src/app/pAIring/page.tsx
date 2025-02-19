@@ -4,11 +4,11 @@ import ProfileCard from '@/components/ProfileCard';
 
 import Link from 'next/link';
 
-import AgeIcon from '/public/assets/icons/keyword_age.svg';
-import BeerIcon from '/public/assets/icons/keyword_beer.svg';
-import LocationIcon from '/public/assets/icons/keyword_location.svg';
-import PersonalityIcon from '/public/assets/icons/keyword_personality.svg';
-import LogoIcon from '/public/assets/icons/logo_letter.svg';
+import AgeIcon from '/src/assets/icons/keyword_age.svg';
+import BeerIcon from '/src/assets/icons/keyword_beer.svg';
+import LocationIcon from '/src/assets/icons/keyword_location.svg';
+import PersonalityIcon from '/src/assets/icons/keyword_personality.svg';
+import LogoIcon from '/src/assets/icons/logo_letter.svg';
 
 const keywords = [
   { icon: <PersonalityIcon />, title: '성격' },

@@ -8,7 +8,7 @@ import OnboardingHeader from '@/components/header/OnboardingHeader';
 import { useOnboarding } from '@/contexts/OnboardingContext';
 import type { StepChildProps } from '@/hooks/useFunnel';
 
-import DeleteIcon from '/public/assets/icons/address_delete.svg';
+import DeleteIcon from '/src/assets/icons/address_delete.svg';
 
 import Title from '../../Title';
 

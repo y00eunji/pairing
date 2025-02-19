@@ -4,10 +4,10 @@ import FloatingButton from '@/components/common/FloatingButton';
 import ProfileCardHeader from '@/components/header/ProfileCardHeader';
 import ProfileCardInfoContainer from '@/components/ProfileCardInfoContainer';
 
-import BeerIcon from '/public/assets/icons/profilecard_bottle_pink.svg';
-import HobbyIcon from '/public/assets/icons/profilecard_heart_pink.svg';
-import LocationIcon from '/public/assets/icons/profilecard_location_pink.svg';
-import PerconalityIcon from '/public/assets/icons/profilecard_user_pink.svg';
+import BeerIcon from '/src/assets/icons/profilecard_bottle_pink.svg';
+import HobbyIcon from '/src/assets/icons/profilecard_heart_pink.svg';
+import LocationIcon from '/src/assets/icons/profilecard_location_pink.svg';
+import PerconalityIcon from '/src/assets/icons/profilecard_user_pink.svg';
 
 import {
   Carousel,

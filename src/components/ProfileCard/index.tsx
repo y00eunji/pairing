@@ -1,9 +1,9 @@
 'use client';
 
-import DirectIcon from '/public/assets/icons/button_direct.svg';
-import HeartIcon from '/public/assets/icons/button_heart.svg';
-import FaceAuthIcon from '/public/assets/icons/face_auth.svg';
-import LocationIcon from '/public/assets/icons/location.svg';
+import DirectIcon from '/src/assets/icons/button_direct.svg';
+import HeartIcon from '/src/assets/icons/button_heart.svg';
+import FaceAuthIcon from '/src/assets/icons/face_auth.svg';
+import LocationIcon from '/src/assets/icons/location.svg';
 
 import {
   Carousel,

@@ -1,6 +1,6 @@
 import Input from '../common/Input';
 
-import SearchIcon from '/public/assets/icons/search_input.svg';
+import SearchIcon from '/src/assets/icons/search_input.svg';
 
 export default function SearchInput() {
   return (

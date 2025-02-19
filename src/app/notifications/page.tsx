@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import logoImg from '@/assets/images/logo_gray.png';
 import BottomNavBar from '@/components/BottomNavBar';
 import PageHeader from '@/components/header/PageHeader';
 import NotificationCard from '@/components/NotificationCard';
@@ -56,7 +57,7 @@ export default function Notifications() {
           //  알림이 없을 때의 화면
           <div className="flex flex-col items-center w-full justify-center">
             <Image
-              src="/images/logo_gray.png"
+              src={logoImg}
               alt="알림이 없을 때 페이지 로고"
               width={335}
               height={335}

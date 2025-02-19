@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
+import errorLogoImg from '@/assets/images/logo_error.png';
 import Button from '@/components/common/Button';
 
 export default function NotFound() {
@@ -12,7 +13,7 @@ export default function NotFound() {
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="flex flex-col items-center">
         <Image
-          src="/images/logo_error.png"
+          src={errorLogoImg}
           alt="에러페이지 로고"
           width={335}
           height={335}

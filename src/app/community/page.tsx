@@ -1,5 +1,6 @@
 'use client';
 
+import LogoImg from '@/assets/images/logo_gray.png';
 import BottomNavBar from '@/components/BottomNavBar';
 import PlusButton from '@/components/buttons/PlusButton';
 import Button from '@/components/common/Button';
@@ -273,7 +274,7 @@ export default function Community() {
               {/* 내가 작성한 글 없을 때 */}
               <div className="flex flex-col items-center w-full h-[50%] justify-center">
                 <Image
-                  src="/images/logo_gray.png"
+                  src={LogoImg}
                   alt="내가 작성한 글 없을 때 페이지 로고"
                   width={335}
                   height={335}

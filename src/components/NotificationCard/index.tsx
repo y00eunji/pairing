@@ -11,7 +11,7 @@ import ExclamationIcon from '/public/assets/icons/alert_exclamationMark.svg';
 import DeleteIcon from '/public/assets/icons/delete_small_gray.svg';
 
 interface NotificationCardProps {
-  profileImg: string;
+  profileImg?: React.ReactNode;
   name: string;
   age: number;
   location: string;

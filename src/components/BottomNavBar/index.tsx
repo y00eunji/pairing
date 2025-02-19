@@ -96,7 +96,7 @@ export default function BottomNavBar({ chatNotificationCount = 0 }: Props) {
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full z-50">
       <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[520px]">
         <nav className="bg-white py-3 rounded-tr-3xl rounded-tl-3xl shadow-[0px_-3px_3px_rgba(0,0,0,0.01)]">
           <div className="flex justify-around items-center">

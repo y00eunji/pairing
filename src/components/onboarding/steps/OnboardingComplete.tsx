@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
+import LogoImg from '@/assets/images/onboarding-complete.png';
 import Button from '@/components/common/Button';
 import type { StepChildProps } from '@/hooks/useFunnel';
 
@@ -30,12 +31,7 @@ export default function OnboardingComplete({ onPrev }: StepChildProps) {
       </div>
 
       <div className="flex flex-col items-center w-full h-[70%] justify-center">
-        <Image
-          src="/images/onboarding-complete.png"
-          alt="sign_in_complete"
-          width={335}
-          height={335}
-        />
+        <Image src={LogoImg} alt="sign_in_complete" width={335} height={335} />
 
         <div className="font-14-regular mt-[20px] w-full text-center">
           페어링 시작하기를 누르면 <br /> 메인화면으로 이동합니다.

@@ -14,7 +14,7 @@ export default function UserProfile({
   age,
   location,
   imageSize = 50,
-  imageSrc = '/images/profile.png',
+  imageSrc = '',
   buttonComponent,
 }: UserProfileProps) {
   return (

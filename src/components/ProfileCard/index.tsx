@@ -15,14 +15,14 @@ interface ProfileCardProps {
   name: string;
   age?: React.ReactNode;
   location: string;
-  images?: string[];
+  // images?: string;
 }
 
 export default function ProfileCard({
   name,
   age,
   location,
-  images,
+  // images,
 }: ProfileCardProps) {
   return (
     <div className="relative w-full aspect-square rounded-xl shadow-lg overflow-hidden">

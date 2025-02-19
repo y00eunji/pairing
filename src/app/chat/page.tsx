@@ -16,7 +16,7 @@ export default function Chat() {
       name: '김이름',
       time: new Date(),
       message: '채팅방 리스트',
-      profileImage: '/images/profile.png',
+      // profileImage: profileImg,
       messageCnt: 2,
     },
     {
@@ -24,7 +24,7 @@ export default function Chat() {
       name: '김이름',
       time: new Date(),
       message: '채팅방 리스트',
-      profileImage: '/images/profile.png',
+      // profileImage: profileImg,
       messageCnt: 2,
     },
     {
@@ -32,7 +32,7 @@ export default function Chat() {
       name: '김이름',
       time: new Date(),
       message: '채팅방 리스트',
-      profileImage: '/images/profile.png',
+      // profileImage: profileImg,
       messageCnt: 2,
     },
     {
@@ -40,7 +40,7 @@ export default function Chat() {
       name: '김이름',
       time: new Date(),
       message: '채팅방 리스트',
-      profileImage: '/images/profile.png',
+      // profileImage: profileImg,
       messageCnt: 2,
     },
     {
@@ -48,7 +48,7 @@ export default function Chat() {
       name: '김이름',
       time: new Date(),
       message: '채팅방 리스트',
-      profileImage: '/images/profile.png',
+      // profileImage: profileImg,
       messageCnt: 2,
     },
   ];
@@ -77,7 +77,7 @@ export default function Chat() {
               name={item.name}
               time={item.time}
               message={item.message}
-              profileImage={item.profileImage}
+              // profileImage={item.profileImage}
               messageCnt={item.messageCnt}
             />
           </div>

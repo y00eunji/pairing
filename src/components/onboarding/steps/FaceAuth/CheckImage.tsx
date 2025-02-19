@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import Image from 'next/image';
 
+import faceAuthImg from '@/assets/images/face-auth-check.png';
 import Button from '@/components/common/Button';
 import OnboardingHeader from '@/components/header/OnboardingHeader';
 import type { StepChildProps } from '@/hooks/useFunnel';
@@ -21,12 +22,7 @@ export default function CheckImage({ onPrev, onNext }: StepChildProps) {
       </div>
 
       <div className="flex flex-col items-center w-full h-[80%] justify-center">
-        <Image
-          src="/images/face-auth-check.png"
-          alt="얼굴 확인"
-          width={335}
-          height={335}
-        />
+        <Image src={faceAuthImg} alt="얼굴 확인" width={335} height={335} />
 
         <div className="font-14-regular mt-[20px] w-full text-center">
           잠시만 기다려주세요. <br /> 시간이 소요됩니다.

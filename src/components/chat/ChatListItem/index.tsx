@@ -7,8 +7,8 @@ interface Props {
   name: string;
   time: Date;
   message: string;
-  messageCnt?: number;
-  profileImage: string;
+  messageCnt: number;
+  profileImage?: string;
 }
 
 export default function ChatListItem({

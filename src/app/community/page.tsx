@@ -1,6 +1,13 @@
 'use client';
 
-import LogoImg from '@/assets/images/logo_gray.png';
+import { useState } from 'react';
+
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+
+import CheckIcon from '@/assets/icons/alert_checkMark.svg';
+import ExclamationIcon from '@/assets/icons/alert_exclamationMark.svg';
 import BottomNavBar from '@/components/BottomNavBar';
 import PlusButton from '@/components/buttons/PlusButton';
 import Button from '@/components/common/Button';
@@ -12,15 +19,6 @@ import ListModal from '@/components/modal/ListModal';
 import PostCard from '@/components/PostCard/page';
 import UserProfile from '@/components/profiles/UserProfile';
 import { useModal } from '@/hooks/useModal';
-
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-
-import { useState } from 'react';
-
-import CheckIcon from '/src/assets/icons/alert_checkMark.svg';
-import ExclamationIcon from '/src/assets/icons/alert_exclamationMark.svg';
 
 export default function Community() {
   const router = useRouter();
@@ -274,7 +272,7 @@ export default function Community() {
               {/* 내가 작성한 글 없을 때 */}
               <div className="flex flex-col items-center w-full h-[50%] justify-center">
                 <Image
-                  src={LogoImg}
+                  src="/images/logo_gray.png"
                   alt="내가 작성한 글 없을 때 페이지 로고"
                   width={335}
                   height={335}

@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Noto_Sans_KR, Roboto } from 'next/font/google';
 
-import iconLogoImg from '@/assets/images/favicon_pairing.png';
 import Providers from '@/provider/providers';
 import './globals.css';
 
@@ -21,7 +20,7 @@ export const metadata: Metadata = {
   title: 'pAIring',
   description: 'pAIring',
   icons: {
-    icon: iconLogoImg.src,
+    icon: '/images/favicon_pairing.png',
   },
 };
 

@@ -8,8 +8,6 @@ import { useRouter } from 'next/navigation';
 
 import BackIcon from '/src/assets/icons/back_icon.svg';
 
-import terms2Img from '@/assets/images/terms-2.png';
-import terms3Img from '@/assets/images/terms-3.png';
 import Button from '@/components/common/Button';
 import Title from '@/components/onboarding/Title';
 
@@ -105,7 +103,11 @@ export default function PrivacyConsent() {
               </div>
 
               <div className="relative w-full h-[200px]">
-                <Image src={terms2Img} alt="개인정보 수집 항목" fill />
+                <Image
+                  src="/images/terms-2.png"
+                  alt="개인정보 수집 항목"
+                  fill
+                />
               </div>
             </div>
 
@@ -137,7 +139,11 @@ export default function PrivacyConsent() {
               </div>
 
               <div className="relative w-full h-[280px]">
-                <Image src={terms3Img} alt="개인정보 수집 항목" fill />
+                <Image
+                  src="/images/terms-3.png"
+                  alt="개인정보 수집 항목"
+                  fill
+                />
               </div>
             </div>
 

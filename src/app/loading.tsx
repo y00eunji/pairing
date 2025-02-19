@@ -4,7 +4,6 @@ import * as React from 'react';
 
 import Image from 'next/image';
 
-import LogoImg from '@/assets/images/onboarding-complete.png';
 import { Progress } from '@/components/Progress';
 
 export default function Loading() {
@@ -22,7 +21,12 @@ export default function Loading() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="flex flex-col items-center">
-        <Image src={LogoImg} alt="로고" width={335} height={335} />
+        <Image
+          src="/images/onboarding-complete.png"
+          alt="로고"
+          width={335}
+          height={335}
+        />
 
         <div className="flex flex-col items-center mt-0">
           <p className="font-18-medium text-mainPink1 pb-1">

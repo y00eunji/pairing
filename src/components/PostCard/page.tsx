@@ -10,7 +10,7 @@ import MoreGrayIcon from '/src/assets/icons/more_gray.svg';
 interface PostCardProps {
   name: string;
   age: number;
-  location: string;
+  city: string;
   content: string;
   imageUrl?: string;
   time: Date;
@@ -22,7 +22,7 @@ interface PostCardProps {
 export default function PostCard({
   name,
   age,
-  location,
+  city,
   content,
   imageUrl,
   time,
@@ -39,7 +39,7 @@ export default function PostCard({
       <UserProfile
         name={name}
         age={age}
-        location={location}
+        city={city}
         imageSize={80}
         buttonComponent={
           <button
@@ -60,7 +60,10 @@ export default function PostCard({
             <Image
               src={imageUrl}
               alt="게시글 image"
+              width={100}
+              height={100}
               className="mt-2 w-full object-cover"
+              unoptimized={true}
             />
           )}
         </div>

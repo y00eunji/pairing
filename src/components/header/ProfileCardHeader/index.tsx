@@ -112,7 +112,7 @@ export default function ProfileCardHeader({
       {/* 신고 확인 모달 */}
       <ActionModal
         isOpen={reportConfirmModal.isOpen}
-        icon={<ExclamationIcon />}
+        icon={<ExclamationIcon fill="#FF4F75" />}
         message={reportMessage}
         buttons={[
           {
@@ -149,7 +149,7 @@ export default function ProfileCardHeader({
       {/* 차단하기 여부 모달 */}
       <ActionModal
         isOpen={blockCheckModal.isOpen}
-        icon={<ExclamationIcon />}
+        icon={<ExclamationIcon fill="#FF4F75" />}
         message="차단 하시겠습니까?"
         buttons={[
           {

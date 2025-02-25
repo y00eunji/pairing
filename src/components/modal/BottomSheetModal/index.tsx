@@ -16,7 +16,7 @@ export default function BottomSheetModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 w-full max-w-[520px] mx-auto overflow-hidden">
+    <div className="fixed inset-x-0 bottom-0 z-50 w-full max-w-[520px] mx-auto overflow-hidden z-60">
       {/* 배경 오버레이 */}
       <div className="fixed inset-0 bg-black bg-opacity-50" onClick={isClose} />
       {/* 바텀시트 컨텐츠 */}

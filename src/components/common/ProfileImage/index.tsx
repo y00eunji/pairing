@@ -25,6 +25,7 @@ export default function ProfileImage({
         alt={alt}
         width={size}
         height={size}
+        unoptimized={true}
         className={cn('object-cover', className)}
       />
     </div>

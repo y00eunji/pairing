@@ -19,7 +19,7 @@ export default function PostCreate() {
   const maxLength = 80;
   const outModal = useModal(false);
   const router = useRouter();
-  // 단일 이미지 상태로 변경합니다.
+
   const [image, setImage] = useState<string>('');
 
   // 단일 이미지 업로드 핸들러
@@ -44,7 +44,7 @@ export default function PostCreate() {
 
       <ActionModal
         isOpen={outModal.isOpen}
-        icon={<ExclamationIcon />}
+        icon={<ExclamationIcon fill="#FF4F75" />}
         message="현재 페이지를 나가시겠습니까?"
         description="작성하신 글이 삭제됩니다."
         buttons={[

@@ -23,20 +23,20 @@ const recommendationList = [
     name: '김이름',
     age: '20',
     location: '서울시 용산구',
-    // images: [
-    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
-    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
-    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
-    // ],
+    images: [
+      'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+      'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+      'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    ],
   },
   {
     name: '김이름',
     age: '20',
     location: '서울시 강남구',
-    // images: [
-    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
-    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
-    // ],
+    images: [
+      'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+      'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    ],
   },
 ];
 
@@ -46,19 +46,19 @@ const keywordRecommendationList = [
     name: '김이름',
     age: '20',
     location: '서울시 용산구',
-    // images: [
-    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
-    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
-    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
-    // ],
+    images: [
+      'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+      'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+      'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    ],
   },
   {
     name: '김이름',
     age: '20',
     location: '서울시 중구',
-    // images: [
-    //   'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
-    // ],
+    images: [
+      'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
+    ],
   },
 ];
 
@@ -83,7 +83,7 @@ export default function MainPage() {
                   name={item.name}
                   age={item.age}
                   location={item.location}
-                  // images={item.images}
+                  images={item.images}
                 />
               ))}
             </div>
@@ -105,7 +105,7 @@ export default function MainPage() {
                   name={item.name}
                   age={item.age}
                   location={item.location}
-                  // images={item.images}
+                  images={item.images}
                 />
               ))}
             </div>

@@ -15,7 +15,7 @@ const formatDate = (date: Date) => {
 export default function Notifications() {
   const notificationList = [
     {
-      profileImg: '/images/profile.png',
+      profileImg: 'https://placehold.co/600x400',
       name: '김이름',
       age: 20,
       location: '서울시',
@@ -24,7 +24,7 @@ export default function Notifications() {
       isMe: false,
     },
     {
-      profileImg: '/images/profile.png',
+      profileImg: 'https://placehold.co/600x400',
       name: '김이름',
       age: 20,
       location: '서울시',
@@ -33,7 +33,7 @@ export default function Notifications() {
       isMe: false,
     },
     {
-      profileImg: '/images/profile.png',
+      profileImg: 'https://placehold.co/600x400',
       name: '김이름',
       age: 20,
       location: '서울시',
@@ -80,7 +80,7 @@ export default function Notifications() {
                     </div>
                   )}
                   <NotificationCard
-                    profileImg={item.profileImg}
+                    profileImg={item.profileImg ?? '/images/pairing_logo.png'}
                     name={item.name}
                     age={item.age}
                     location={item.location}

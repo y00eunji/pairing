@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 import DirectIcon from '/src/assets/icons/button_direct.svg';
 import HeartIcon from '/src/assets/icons/button_heart.svg';
 import FaceAuthIcon from '/src/assets/icons/face_auth.svg';
@@ -7,6 +9,8 @@ import LocationIcon from '/src/assets/icons/location.svg';
 
 import {
   Carousel,
+  CarouselContent,
+  CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/Carousel';
@@ -15,14 +19,14 @@ interface ProfileCardProps {
   name: string;
   age?: React.ReactNode;
   location: string;
-  // images?: string;
+  images?: string[];
 }
 
 export default function ProfileCard({
   name,
   age,
   location,
-  // images,
+  images,
 }: ProfileCardProps) {
   return (
     <div className="relative w-full aspect-square rounded-xl shadow-lg overflow-hidden">
@@ -30,27 +34,30 @@ export default function ProfileCard({
       <Carousel>
         {/* 삭제 하면 안됨 */}
 
-        {/* <CarouselContent>
-          {images.map((imgUrl, index) => (
+        <CarouselContent>
+          {images?.map((imgUrl, index) => (
             <CarouselItem key={index}>
               <Image
                 src={imgUrl}
                 alt={`Profile image ${index + 1}`}
                 className="object-cover w-full h-full"
+                width={300}
+                height={300}
+                unoptimized={true}
               />
             </CarouselItem>
           ))}
-        </CarouselContent> */}
+        </CarouselContent>
         {/* 좌우 이동 버튼 */}
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
 
       {/* 그라데이션 오버레이 */}
-      <div className="absolute inset-0 bg-gradient-to-t from-mainPink2 via-transparent to-transparent rounded-xl z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-mainPink2 via-transparent to-transparent rounded-xl z-5" />
 
       {/* 사용자 정보 */}
-      <div className="absolute left-5 bottom-6 z-20">
+      <div className="absolute left-5 bottom-6">
         <div className="pb-2">
           <FaceAuthIcon />
         </div>
@@ -65,7 +72,7 @@ export default function ProfileCard({
       </div>
 
       {/* 버튼 */}
-      <div className="absolute right-3 bottom-3 z-20 flex items-start">
+      <div className="absolute right-3 bottom-3 flex items-start">
         <button>
           <DirectIcon />
         </button>

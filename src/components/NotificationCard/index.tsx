@@ -63,7 +63,10 @@ export default function NotificationCard({
 
         {/* 프로필 이미지 */}
         <div className="mr-2">
-          <ProfileImage src="/images/profile.png" size={90} />
+          <ProfileImage
+            src={profileImg ?? '/images/pairing_logo.png'}
+            size={90}
+          />
         </div>
 
         {/* 알림 내용 */}
@@ -86,7 +89,7 @@ export default function NotificationCard({
 
       <ActionModal
         isOpen={deleteConfirmModal.isOpen}
-        icon={<ExclamationIcon />}
+        icon={<ExclamationIcon fill="#FF4F75" />}
         message="이 알림을 삭제하시겠습니까?"
         buttons={[
           {

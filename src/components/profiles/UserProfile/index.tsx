@@ -3,7 +3,7 @@ import ProfileImage from '@/components/common/ProfileImage';
 interface UserProfileProps {
   name: string;
   age: number;
-  location: string;
+  city: string;
   imageSize?: number;
   imageSrc?: string;
   buttonComponent?: React.ReactNode;
@@ -12,7 +12,7 @@ interface UserProfileProps {
 export default function UserProfile({
   name,
   age,
-  location,
+  city,
   imageSize = 50,
   imageSrc = '',
   buttonComponent,
@@ -29,7 +29,7 @@ export default function UserProfile({
         <p className="font-18-medium pb-1">{name}</p>
         <p>
           <span>{age}, </span>
-          <span>{location}</span>
+          <span>{city}</span>
         </p>
       </div>
 

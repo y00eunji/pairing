@@ -14,41 +14,28 @@ export default function Chat() {
     {
       id: 1,
       name: '김이름',
-      time: new Date(),
+      createdAt: new Date(),
       message: '채팅방 리스트',
-      // profileImage: profileImg,
+      profileImage:
+        'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
       messageCnt: 2,
     },
     {
       id: 2,
       name: '김이름',
-      time: new Date(),
+      createdAt: new Date(),
       message: '채팅방 리스트',
-      // profileImage: profileImg,
+      profileImage:
+        'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
       messageCnt: 2,
     },
     {
       id: 3,
       name: '김이름',
-      time: new Date(),
+      createdAt: new Date(),
       message: '채팅방 리스트',
-      // profileImage: profileImg,
-      messageCnt: 2,
-    },
-    {
-      id: 4,
-      name: '김이름',
-      time: new Date(),
-      message: '채팅방 리스트',
-      // profileImage: profileImg,
-      messageCnt: 2,
-    },
-    {
-      id: 5,
-      name: '김이름',
-      time: new Date(),
-      message: '채팅방 리스트',
-      // profileImage: profileImg,
+      profileImage:
+        'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
       messageCnt: 2,
     },
   ];
@@ -75,9 +62,9 @@ export default function Chat() {
           >
             <ChatListItem
               name={item.name}
-              time={item.time}
+              time={item.createdAt}
               message={item.message}
-              // profileImage={item.profileImage}
+              profileImage={item.profileImage ?? '/images/pairing_logo.png'}
               messageCnt={item.messageCnt}
             />
           </div>

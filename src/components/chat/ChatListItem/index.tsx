@@ -22,7 +22,7 @@ export default function ChatListItem({
     <div className="w-full h-[96px] flex gap-[15px] justify-between py-[15px] px-[20px] bg-#f9f9f9">
       <div className="flex justify-center items-center">
         <ProfileImage
-          src="/images/profile.png"
+          src={profileImage ?? '/images/pairing_logo.png'}
           className="rounded-full"
           size={65}
         />

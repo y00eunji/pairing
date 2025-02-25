@@ -64,7 +64,7 @@ export default function KeywordList({ keywords }: KeywordListProps) {
       {/* (1) 키워드 선택 전 확인 모달 */}
       <ActionModal
         isOpen={checkModal.isOpen}
-        icon={<ExclamationIcon />}
+        icon={<ExclamationIcon fill="#FF4F75" />}
         message={keywordMessage}
         description="맞춤 추천 키워드는 하루 한번만 선택이 가능합니다."
         buttons={[
@@ -88,7 +88,7 @@ export default function KeywordList({ keywords }: KeywordListProps) {
       {/* (2) 키워드 선택 완료 모달 */}
       <ActionModal
         isOpen={checkModalSuccessModal.isOpen}
-        icon={<CheckIcon />}
+        icon={<CheckIcon fill="#FF85A2" />}
         message="신청이 완료되었습니다."
         buttons={[
           {
@@ -102,7 +102,7 @@ export default function KeywordList({ keywords }: KeywordListProps) {
       {/* (3) 이미 버튼을 사용한 뒤 다시 누를 때 뜨는 모달 */}
       <ActionModal
         isOpen={alreadyUsedModal.isOpen}
-        icon={<ExclamationIcon />}
+        icon={<ExclamationIcon fill="#FF4F75" />}
         message="오늘 추천 횟수를 모두 받으셨습니다."
         description="내일 다시 사용자를 추천 받으실 수 있습니다."
         buttons={[

@@ -79,7 +79,7 @@ export default function ChatBubble({
       {/* 채팅 삭제 여부 모달 */}
       <ActionModal
         isOpen={deleteConfirmModal.isOpen}
-        icon={<ExclamationIcon />}
+        icon={<ExclamationIcon fill="#FF4F75" />}
         message="채팅을 삭제하시겠습니까?"
         buttons={[
           {

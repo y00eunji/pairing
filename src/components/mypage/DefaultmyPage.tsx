@@ -109,7 +109,7 @@ export default function DefaultMyPage({ name, age }: DefaultInfoProps) {
 
         <ActionModal
           isOpen={logoutModal.isOpen}
-          icon={<ExclamationIcon />}
+          icon={<ExclamationIcon fill="#FF4F75" />}
           message="로그아웃을 하시겠습니까?"
           buttons={[
             {
@@ -145,7 +145,7 @@ export default function DefaultMyPage({ name, age }: DefaultInfoProps) {
 
         <ActionModal
           isOpen={withdrawalModal.isOpen}
-          icon={<ExclamationIcon />}
+          icon={<ExclamationIcon fill="#FF4F75" />}
           message="페어링의 회원탈퇴를 하시겠습니까?"
           description="계정 삭제 시 모든 데이터가 삭제됩니다."
           buttons={[

@@ -64,8 +64,12 @@ export default function Age({
                 className="w-8"
                 value={minAge}
                 maxLength={2}
+                pattern="\d*"
+                inputMode="numeric"
                 onChange={(e) => {
-                  const value = e.target.value.slice(0, 2);
+                  const value = e.target.value
+                    .replace(/[^0-9]/g, '')
+                    .slice(0, 2);
                   setMinAge(value);
                 }}
               />
@@ -74,8 +78,12 @@ export default function Age({
                 className="w-8"
                 value={maxAge}
                 maxLength={2}
+                pattern="\d*"
+                inputMode="numeric"
                 onChange={(e) => {
-                  const value = e.target.value.slice(0, 2);
+                  const value = e.target.value
+                    .replace(/[^0-9]/g, '')
+                    .slice(0, 2);
                   setMaxAge(value);
                 }}
               />

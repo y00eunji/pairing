@@ -149,7 +149,7 @@ input[type='date'] {
 }
 
 input[type='date']::-webkit-calendar-picker-indicator {
-  background: url('/assets/icons/callendar.svg') no-repeat center center;
+  opacity: 0;  /* 기본 캘린더 아이콘 숨기기 */
   position: absolute;
   right: 0;
   margin: 0;

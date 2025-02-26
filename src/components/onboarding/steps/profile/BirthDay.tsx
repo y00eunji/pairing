@@ -1,3 +1,5 @@
+import CalendarIcon from '/src/assets/icons/calendar.svg';
+
 import Button from '@/components/common/Button';
 import OnboardingHeader from '@/components/header/OnboardingHeader';
 import { useOnboarding } from '@/contexts/OnboardingContext';
@@ -64,6 +66,7 @@ export default function BirthDay({
                 })}
               </div>
             )}
+            <CalendarIcon className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none" />
           </div>
         </div>
 

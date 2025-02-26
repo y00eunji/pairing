@@ -10,7 +10,7 @@ import Button from '@/components/common/Button';
 import ActionModal from '@/components/modal/ActionModal';
 import BottomSheetModal from '@/components/modal/BottomSheetModal';
 import ListModal from '@/components/modal/ListModal';
-import PostCard from '@/components/PostCard/page';
+import PostCard from '@/components/PostCard';
 import UserProfile from '@/components/profiles/UserProfile';
 import { useModal } from '@/hooks/useModal';
 import type { MeListItem, MyPost } from '@/types/community';
@@ -41,7 +41,6 @@ const MyPostsTab: React.FC<MyPostsTabProps> = ({ myPosts, meList }) => {
               imageUrl={item.imageUrl}
               time={new Date(item.createdAt)}
               buttonText="저요 목록 보기"
-              onMoreClick={myPostMenuModal.openModal}
               onButtonClick={bottomSheetModal.openModal}
             />
           ))}

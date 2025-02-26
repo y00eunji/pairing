@@ -195,7 +195,7 @@ export const CarouselPrevious = React.forwardRef<
       ref={ref}
       type="button"
       className={cn(
-        'absolute z-30 flex items-center justify-center',
+        'absolute z-30 flex items-center justify-center text-white hover:text-mainPink1 transition-colors',
         orientation === 'horizontal'
           ? 'left-2 top-1/2 -translate-y-1/2'
           : 'top-2 left-1/2 -translate-x-1/2 rotate-90',
@@ -224,7 +224,7 @@ export const CarouselNext = React.forwardRef<
       ref={ref}
       type="button"
       className={cn(
-        'absolute z-30 flex items-center justify-center',
+        'absolute z-30 flex items-center justify-center text-white hover:text-mainPink1 transition-colors',
         orientation === 'horizontal'
           ? 'right-2 top-1/2 -translate-y-1/2'
           : 'bottom-2 left-1/2 -translate-x-1/2 rotate-90',

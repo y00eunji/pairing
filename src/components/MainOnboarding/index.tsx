@@ -20,17 +20,17 @@ export default function MainOnboarding() {
       image: '/images/main_faceAuth_logo.png',
     },
     {
-      title: '실시간 AI 추천',
+      title: '알고리즘을 통한 추천',
       content: '으로\n나와 맞는 사람을 발견하세요!',
       description:
-        '취향, 대화 스타일, 호감도를 분석하는 AI가\n당신과 가장 잘 맞는 상대를 실시간으로 추천해줍니다.',
+        '실시간 추천으로 나와 맞는 사람을 발견하세요.\n 알고리즘을 통해 당신과 잘 맞는 상대를\n 실시간으로 추천해줍니다',
       image: '/images/main_match_logo.png',
     },
     {
-      title: '채팅 요약 & 감정도 분석',
-      content: '으로\n대화 흐름을 한눈에!',
+      title: '채팅 요약 & 호감도 분석\n & 대화 주제 추천',
+      content: '으로 앞으로의\n 대화를 쉽게!',
       description:
-        'AI가 채팅 내용을 요약하고 호감도를 분석하여,\n상대와의 대화 흐름을 더 쉽게 파악하고\n자연스럽게 이어갈 수 있습니다.',
+        'AI가 채팅 내용을 요약하고 호감도를 분석하여,\n상대와의 대화 흐름을 더 쉽게 파악하고\n자연스럽게 이어갈 수 있도록 도와줍니다.',
       image: '/images/main_chat_logo.png',
     },
   ];
@@ -63,7 +63,7 @@ export default function MainOnboarding() {
       {/* 중앙 영역 */}
       <div className="flex-1 flex flex-col px-6">
         {/* 큰 제목 부분 */}
-        <h1 className="text-24px font-bold">
+        <h1 className="text-24px font-bold whitespace-pre-line">
           <span className="text-mainPink1">{title}</span>
           <span className="whitespace-pre-line text-black"> {content}</span>
         </h1>

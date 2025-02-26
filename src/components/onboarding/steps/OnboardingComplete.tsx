@@ -12,6 +12,8 @@ export default function OnboardingComplete({ onPrev }: StepChildProps) {
   const router = useRouter();
 
   const handleClick = () => {
+    // 메인 온보딩 사용 이력 저장
+    localStorage.setItem('hasSeenOnboarding', 'true');
     router.push('/pAIring');
   };
 

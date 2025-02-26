@@ -3,6 +3,7 @@
 import { useModal } from '@/hooks/useModal';
 import formatTime from '@/utils/date';
 
+import Button from '../common/Button';
 import ProfileImage from '../common/ProfileImage';
 import ActionModal from '../modal/ActionModal';
 
@@ -14,7 +15,7 @@ interface NotificationCardProps {
   profileImg?: string;
   name: string;
   age: number;
-  location: string;
+  city: string;
   time: Date;
   isHeart: boolean; // true이면 하트 알림
   isMe: boolean; // true이면 저요 알림
@@ -24,7 +25,7 @@ export default function NotificationCard({
   profileImg,
   name,
   age,
-  location,
+  city,
   time,
   isHeart,
   isMe,
@@ -74,16 +75,20 @@ export default function NotificationCard({
           <p className="text-sm font-semiBold pb-1">{messageText}</p>
           <p className="pb-3">
             <span>{age}, </span>
-            <span>{location}</span>
+            <span>{city}</span>
           </p>
           <p className="text-12px text-gray1 mt-1">{formatTime(time)}</p>
         </div>
 
         {/* 버튼 (messageText가 있을 때만 표시) */}
         {messageText && (
-          <button className="absolute bottom-3 right-4 text-14px font-bold text-gray1 bg-gray2 rounded-3xl px-3 py-1">
+          <Button
+            shape="circle"
+            variant="filled"
+            className="absolute bottom-3 right-4 text-14px font-bold text-white rounded-3xl px-3 py-1.5"
+          >
             {buttonText}
-          </button>
+          </Button>
         )}
       </div>
 

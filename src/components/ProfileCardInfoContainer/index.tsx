@@ -31,7 +31,7 @@ export default function ProfileCardInfoContainer({
               key={tag}
               className="text-18px bg-gray3 px-[12px] py-[3px] rounded-[20px]"
             >
-              {tag}
+              {[tag]}
             </div>
           ))}
         </div>

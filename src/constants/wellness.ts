@@ -16,3 +16,6 @@ export const SMOKE_STATUS = {
 
 export type DrinkStatusType = (typeof DRINK_STATUS)[keyof typeof DRINK_STATUS];
 export type SmokeStatusType = (typeof SMOKE_STATUS)[keyof typeof SMOKE_STATUS];
+
+export type DrinkStatusKey = keyof typeof DRINK_STATUS;
+export type SmokeStatusKey = keyof typeof SMOKE_STATUS;

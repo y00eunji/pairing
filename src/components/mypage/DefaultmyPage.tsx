@@ -3,7 +3,9 @@
 import { useRouter } from 'next/navigation';
 
 import ProfileCardInfoContainer from '@/components/ProfileCardInfoContainer';
+import { DRINK_STATUS, SMOKE_STATUS } from '@/constants/wellness';
 import { useModal } from '@/hooks/useModal';
+import type { myProfile } from '@/types/member/mypage';
 
 import BottomNavBar from '../BottomNavBar';
 import Button from '../common/Button';
@@ -18,17 +20,20 @@ import HobbyIcon from '/src/assets/icons/profilecard_heart_pink.svg';
 import LocationIcon from '/src/assets/icons/profilecard_location_pink.svg';
 import PerconalityIcon from '/src/assets/icons/profilecard_user_pink.svg';
 
-interface DefaultInfoProps {
-  name: string;
-  age: number;
-}
-
-export default function DefaultMyPage({ name, age }: DefaultInfoProps) {
+export default function DefaultMyPage({
+  name,
+  age,
+  mbti,
+  drink,
+  smoke,
+  city,
+  district,
+  hobby,
+}: myProfile) {
   const router = useRouter();
 
   const logoutModal = useModal();
   const logoutConfirmModal = useModal();
-
   const withdrawalModal = useModal();
   const withdrawalConfirmModal = useModal();
 
@@ -36,7 +41,6 @@ export default function DefaultMyPage({ name, age }: DefaultInfoProps) {
     router.push('/mypage/edit/info');
   };
 
-  // TODO : 로그아웃, 회원탈퇴 로직 추가
   const handleLogout = () => {
     logoutModal.openModal();
   };
@@ -45,9 +49,40 @@ export default function DefaultMyPage({ name, age }: DefaultInfoProps) {
     withdrawalModal.openModal();
   };
 
+  // 음주/흡연 "키" -> "값" 변환
+  const drinkStatus = drink && DRINK_STATUS[drink];
+  const smokeStatus = smoke && SMOKE_STATUS[smoke];
+
+  // undefined 등 falsy 값 제거
+  const drinkSmokeTags = [drinkStatus, smokeStatus].filter(Boolean) as string[];
+
+  // 프로필 정보 배열 (거주지, 취미, MBTI, 음주/흡연)
+  const profileInfoItems = [
+    {
+      icon: <LocationIcon />,
+      title: '거주지',
+      description: `${city} ${district}`,
+    },
+    {
+      icon: <HobbyIcon />,
+      title: '취미',
+      tags: hobby,
+    },
+    {
+      icon: <PerconalityIcon />,
+      title: '성격(MBTI)',
+      description: mbti,
+    },
+    {
+      icon: <BeerIcon />,
+      title: '음주 흡연 여부',
+      tags: drinkSmokeTags,
+    },
+  ];
+
   return (
-    <div className="flex flex-col items-center  overflow-y-auto">
-      <div className="flex flex-col items-center w-full overflow-y-auto  p-5">
+    <div className="flex flex-col items-center overflow-y-auto">
+      <div className="flex flex-col items-center w-full overflow-y-auto p-5">
         <ProfileImageUpload />
 
         <div className="flex flex-col items-center mb-8">
@@ -58,34 +93,23 @@ export default function DefaultMyPage({ name, age }: DefaultInfoProps) {
           </div>
 
           <button
-            className="px-3 py-2 rounded-[25px] border boerder-gray1 text-gray1 font-14-medium"
+            className="px-3 py-2 rounded-[25px] border border-gray1 text-gray1 font-14-medium"
             onClick={handleEdit}
           >
             내 프로필 수정
           </button>
         </div>
 
-        <div className="flex flex-col gap-[10px] w-[98%]">
-          <ProfileCardInfoContainer
-            icon={<LocationIcon />}
-            title="거주지"
-            description="서울시 강남구 역삼동"
-          />
-          <ProfileCardInfoContainer
-            icon={<HobbyIcon />}
-            title="취미"
-            tags={['운동', '독서', '맛집탐방']}
-          />
-          <ProfileCardInfoContainer
-            icon={<PerconalityIcon />}
-            title="성격(MBTI)"
-            description="INFP"
-          />
-          <ProfileCardInfoContainer
-            icon={<BeerIcon />}
-            title="음주 흡연 여부"
-            tags={['전혀 안마심', '비흡연']}
-          />
+        <div className="flex flex-col gap-y-8 w-[98%]">
+          {profileInfoItems.map((item, index) => (
+            <ProfileCardInfoContainer
+              key={index}
+              icon={item.icon}
+              title={item.title}
+              description={item.description}
+              tags={item.tags}
+            />
+          ))}
         </div>
 
         <div className="w-full font-18-medium flex flex-col gap-[10px] mt-[20px] mb-[40px]">

@@ -18,22 +18,22 @@ import {
 interface ProfileCardProps {
   name: string;
   age?: React.ReactNode;
-  location: string;
+  city: string;
+  district: string;
   images?: string[];
 }
 
 export default function ProfileCard({
   name,
   age,
-  location,
+  city,
+  district,
   images,
 }: ProfileCardProps) {
   return (
-    <div className="relative w-full aspect-square rounded-xl shadow-lg overflow-hidden">
+    <div className="relative w-full aspect-square rounded-xl overflow-hidden shadow-[0px_3px_3px_rgba(0,0,0,0.05),_0px_-3px_3px_rgba(0,0,0,0.05),_3px_0px_3px_rgba(0,0,0,0.05),_-3px_0px_3px_rgba(0,0,0,0.05)]">
       {/* 이미지 캐러셀 */}
       <Carousel>
-        {/* 삭제 하면 안됨 */}
-
         <CarouselContent>
           {images?.map((imgUrl, index) => (
             <CarouselItem key={index}>
@@ -48,6 +48,7 @@ export default function ProfileCard({
             </CarouselItem>
           ))}
         </CarouselContent>
+
         {/* 좌우 이동 버튼 */}
         <CarouselPrevious />
         <CarouselNext />
@@ -67,7 +68,9 @@ export default function ProfileCard({
         </div>
         <div className="flex items-center space-x-2">
           <LocationIcon />
-          <span className="text-14px font-medium text-white">{location}</span>
+          <span className="text-14px font-medium text-white">
+            {city} {district}
+          </span>
         </div>
       </div>
 

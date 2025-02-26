@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import AiButton from '@/components/buttons/AiButton/index';
 import ChatBubble from '@/components/chat/ChatBubble';
 import ChatInput from '@/components/chat/ChatInput';
@@ -14,6 +16,9 @@ const formatDate = (date: Date) =>
   });
 
 export default function ChatRoom() {
+  // 메뉴 열림 상태를 상위에서 관리
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const handleSendMessage = () => {
     console.log('보낸 메시지');
   };
@@ -83,14 +88,22 @@ export default function ChatRoom() {
             </div>
           );
         })}
-        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10">
+        <div
+          className={`absolute bottom-20 left-1/2 -translate-x-1/2 transition-all ${
+            isMenuOpen ? 'z-0' : 'z-10'
+          }`}
+        >
           <AiButton />
         </div>
       </div>
 
-      <div className="w-full">
+      <div className="w-full relative z-20">
         <div className="w-full max-w-[520px] mx-auto">
-          <ChatInput onSendMessage={handleSendMessage} />
+          <ChatInput
+            onSendMessage={handleSendMessage}
+            isMenuOpen={isMenuOpen}
+            setIsMenuOpen={setIsMenuOpen}
+          />
         </div>
       </div>
     </div>

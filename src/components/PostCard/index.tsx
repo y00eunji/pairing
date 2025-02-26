@@ -5,8 +5,6 @@ import formatTime from '@/utils/date';
 import Button from '../common/Button';
 import UserProfile from '../profiles/UserProfile';
 
-import MoreGrayIcon from '/src/assets/icons/more_gray.svg';
-
 interface PostCardProps {
   name: string;
   age: number;
@@ -15,7 +13,6 @@ interface PostCardProps {
   imageUrl?: string;
   time: Date;
   buttonText: string;
-  onMoreClick: () => void;
   onButtonClick: () => void;
 }
 
@@ -27,7 +24,6 @@ export default function PostCard({
   imageUrl,
   time,
   buttonText,
-  onMoreClick,
   onButtonClick,
 }: PostCardProps) {
   return (
@@ -36,20 +32,7 @@ export default function PostCard({
     shadow-[0px_3px_3px_rgba(0,0,0,0.05),_0px_-3px_3px_rgba(0,0,0,0.05),_3px_0px_3px_rgba(0,0,0,0.05),_-3px_0px_3px_rgba(0,0,0,0.05)]"
     >
       {/* 헤더 */}
-      <UserProfile
-        name={name}
-        age={age}
-        city={city}
-        imageSize={80}
-        buttonComponent={
-          <button
-            className="absolute right-0 top-0 p-2 pt-4"
-            onClick={onMoreClick}
-          >
-            <MoreGrayIcon />
-          </button>
-        }
-      />
+      <UserProfile name={name} age={age} city={city} imageSize={80} />
 
       <div className="m-4 border-t py-2">
         {/* 게시글 내용 */}

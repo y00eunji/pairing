@@ -22,7 +22,8 @@ const recommendationList = [
   {
     name: '김이름',
     age: '20',
-    location: '서울시 용산구',
+    city: '서울시',
+    district: '용산구',
     images: [
       'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
       'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
@@ -32,7 +33,8 @@ const recommendationList = [
   {
     name: '김이름',
     age: '20',
-    location: '서울시 강남구',
+    city: '서울시',
+    district: '강남구',
     images: [
       'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
       'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
@@ -45,7 +47,8 @@ const keywordRecommendationList = [
   {
     name: '김이름',
     age: '20',
-    location: '서울시 용산구',
+    city: '서울시',
+    district: '용산구',
     images: [
       'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
       'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
@@ -55,7 +58,8 @@ const keywordRecommendationList = [
   {
     name: '김이름',
     age: '20',
-    location: '서울시 중구',
+    city: '서울시',
+    district: '강남구',
     images: [
       'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
     ],
@@ -76,13 +80,14 @@ export default function MainPage() {
             </div>
 
             {/* 프로필카드 영역 */}
-            <div className="flex flex-col items-center gap-5">
+            <div className="flex flex-col justify-center items-center gap-5">
               {recommendationList.map((item, index) => (
                 <ProfileCard
                   key={index}
                   name={item.name}
                   age={item.age}
-                  location={item.location}
+                  city={item.city}
+                  district={item.district}
                   images={item.images}
                 />
               ))}
@@ -104,7 +109,8 @@ export default function MainPage() {
                   key={index}
                   name={item.name}
                   age={item.age}
-                  location={item.location}
+                  city={item.city}
+                  district={item.district}
                   images={item.images}
                 />
               ))}

@@ -15,7 +15,7 @@ export interface ProfileContent {
   photo?: string[];
 }
 
-export interface idalTypeContent {
+export interface idealTypeContent {
   mbti?: string[];
   address?: {
     city: string;
@@ -36,6 +36,6 @@ export interface faceAuthContent {
 
 export interface OnboardingData {
   profile?: ProfileContent;
-  idealType?: idalTypeContent;
+  idealType?: idealTypeContent;
   faceAuth?: faceAuthContent;
 }

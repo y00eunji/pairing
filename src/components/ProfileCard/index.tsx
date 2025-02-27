@@ -31,7 +31,10 @@ export default function ProfileCard({
   images,
 }: ProfileCardProps) {
   return (
-    <div className="relative w-full aspect-square rounded-xl overflow-hidden shadow-[0px_3px_3px_rgba(0,0,0,0.05),_0px_-3px_3px_rgba(0,0,0,0.05),_3px_0px_3px_rgba(0,0,0,0.05),_-3px_0px_3px_rgba(0,0,0,0.05)]">
+    <div
+      className="relative w-full aspect-square rounded-xl overflow-hidden 
+    shadow-[0px_6px_6px_rgba(0,0,0,0.02),_0px_-6px_6px_rgba(0,0,0,0.02),_6px_0px_6px_rgba(0,0,0,0.02),_-6px_0px_6px_rgba(0,0,0,0.02)]"
+    >
       {/* 이미지 캐러셀 */}
       <Carousel>
         <CarouselContent>
@@ -62,13 +65,13 @@ export default function ProfileCard({
         <div className="pb-2">
           <FaceAuthIcon />
         </div>
-        <div className="font-24-medium text-white space-x-3 pb-2">
+        <div className="font-24-bold text-white space-x-3 pb-2">
           <span>{name}</span>
           <span>{age}</span>
         </div>
         <div className="flex items-center space-x-2">
           <LocationIcon />
-          <span className="text-14px font-medium text-white">
+          <span className="text-16px font-regular text-white">
             {city} {district}
           </span>
         </div>

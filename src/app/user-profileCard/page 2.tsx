@@ -84,7 +84,7 @@ export default function UserProfileCard() {
       {/* 프로필 카드 */}
       <div
         className="flex justify-center my-4 aspect-square rounded-xl overflow-hidden bg-white
-      shadow-[0px_6px_6px_rgba(0,0,0,0.02),_0px_-6px_6px_rgba(0,0,0,0.02),_6px_0px_6px_rgba(0,0,0,0.02),_-6px_0px_6px_rgba(0,0,0,0.02)]"
+      shadow-[0px_3px_3px_rgba(0,0,0,0.05),_0px_-3px_3px_rgba(0,0,0,0.05),_3px_0px_3px_rgba(0,0,0,0.05),_-3px_0px_3px_rgba(0,0,0,0.05)]"
       >
         {/* 이미지 캐러셀 */}
         <Carousel>

@@ -3,6 +3,7 @@ export interface Post {
   name: string;
   age: number;
   city: string;
+  profileImg: string;
   content: string;
   imageUrl?: string;
   createdAt: Date | string;
@@ -14,6 +15,7 @@ export interface MyPost {
   name: string;
   age: number;
   city: string;
+  profileImg: string;
   content: string;
   imageUrl: string;
   createdAt: Date | string;
@@ -23,6 +25,7 @@ export interface MeListItem {
   name: string;
   age: number;
   city: string;
+  profileImg: string;
   participantId: 1;
   userId: 2222;
   postId: 1;

@@ -32,7 +32,7 @@ export default function ChatBubble({
         {/* 채팅 버블 */}
         <div
           className={cn(
-            'p-[10px] text-[14px] mb-[20px] w-fit',
+            'p-[10px] text-[14px] mb-[10px] w-fit',
             isMe
               ? 'bg-mainPink1 text-white rounded-[14px] rounded-br-[1px]'
               : 'bg-gray3 text-black rounded-[14px] rounded-bl-[1px]',
@@ -44,7 +44,7 @@ export default function ChatBubble({
         {/* 채팅 시간, 읽음 표시 */}
         <div
           className={cn(
-            'flex gap-[5px] text-black text-[12px] items-center pb-2',
+            'flex gap-[5px] text-black text-[12px] items-center mb-3 ',
             isMe && 'justify-end',
           )}
         >

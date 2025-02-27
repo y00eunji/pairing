@@ -30,10 +30,11 @@ const MyPostsTab: React.FC<MyPostsTabProps> = ({ myPosts, meList }) => {
   return (
     <>
       {myPosts.length > 0 ? (
-        <div className="flex flex-col pb-[200px] h-screen flex-grow overflow-y-auto bg-white">
+        <div className="flex flex-col pb-[200px] h-screen flex-grow overflow-y-auto bg-[#f9f9f9]">
           {myPosts.map((item) => (
             <PostCard
               key={item.id}
+              profileImg={item.profileImg}
               name={item.name}
               age={item.age}
               city={item.city}
@@ -56,6 +57,7 @@ const MyPostsTab: React.FC<MyPostsTabProps> = ({ myPosts, meList }) => {
                 {meList.map((item, index) => (
                   <UserProfile
                     key={index}
+                    imageSrc={item.profileImg}
                     name={item.name}
                     age={item.age}
                     city={item.city}
@@ -99,7 +101,7 @@ const MyPostsTab: React.FC<MyPostsTabProps> = ({ myPosts, meList }) => {
               새로운 글을 작성해보세요!
             </p>
           </div>
-          <Button shape="circle" variant="outline">
+          <Button shape="circle" variant="outline" className="p-1.5 w-[75px]">
             <Link href="/community/create">글 작성</Link>
           </Button>
         </div>

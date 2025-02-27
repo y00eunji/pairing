@@ -7,6 +7,7 @@ export interface idealRecommendList {
 }
 
 export interface keywordRecommendList {
+  keywordId: number;
   name: string;
   age: number;
   city: string;
@@ -15,6 +16,7 @@ export interface keywordRecommendList {
 }
 
 export interface keywordsList {
-  icon: string;
+  keywordId: number;
+  icon: React.ReactNode;
   title: string;
 }

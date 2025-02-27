@@ -5,7 +5,7 @@ interface UserProfileProps {
   age: number;
   city: string;
   imageSize?: number;
-  imageSrc?: string;
+  imageSrc: string;
   buttonComponent?: React.ReactNode;
 }
 

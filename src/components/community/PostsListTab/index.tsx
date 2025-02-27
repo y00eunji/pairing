@@ -17,10 +17,11 @@ const PostsListTab: React.FC<PostsListTabProps> = ({ posts }) => {
         {posts.map((item) => (
           <PostCard
             key={item.id}
+            profileImg={item.profileImg}
             name={item.name}
             age={item.age}
             city={item.city}
-            content={item.content}
+            content={item.content ?? '/images/pairing_logo.png'}
             imageUrl={item.imageUrl ?? '/images/pairing_logo.png'}
             time={new Date(item.createdAt)}
             buttonText="저요"

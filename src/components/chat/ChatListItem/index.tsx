@@ -31,13 +31,13 @@ export default function ChatListItem({
       <div className="flex flex-col gap-[8px] w-[calc(100%-65px)]">
         <div className="flex justify-between">
           <div className="font-bold text-[18px] text-black">{name}</div>
-          <div className="text-gray1 text-[14px] font-roboto font-bold">
+          <div className="text-gray1 text-[14px] font-roboto font-medium">
             {formatTime(time)}
           </div>
         </div>
 
         <div className="flex justify-between">
-          <div className="text-[14px] text-gray1 w-[74%] line-clamp-2">
+          <div className="font-14-regular text-gray1 w-[74%] line-clamp-2">
             {message}
           </div>
           {messageCnt !== undefined && messageCnt > 0 && (

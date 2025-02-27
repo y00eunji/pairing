@@ -14,6 +14,8 @@ export default function Community() {
       name: '김이름',
       age: 20,
       city: '서울시',
+      profileImg:
+        'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
       content:
         '글 내용 가나다라마바사 아자차카타파하 가나 다라 마바사 아자차카 타파하 가나다라마 바사 아자차카 타파하가 나다라마바사.',
       imageUrl:
@@ -25,6 +27,8 @@ export default function Community() {
       name: '김이름',
       age: 20,
       city: '서울시',
+      profileImg:
+        'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
       content:
         '글 내용 가나다라마바사 아자차카타파하 가나 다라 마바사 아자차카 타파하 가나다라마 바사 아자차카 타파하가 나다라마바사.',
       createdAt: new Date('2025-01-31T09:01:00'),
@@ -38,6 +42,8 @@ export default function Community() {
       name: '김이름',
       age: 20,
       city: '서울시',
+      profileImg:
+        'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
       imageUrl:
         'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
       content:
@@ -48,6 +54,8 @@ export default function Community() {
 
   const meList: MeListItem[] = [
     {
+      profileImg:
+        'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
       name: '김이름',
       age: 20,
       city: '서울시',
@@ -56,6 +64,8 @@ export default function Community() {
       postId: 1,
     },
     {
+      profileImg:
+        'https://upload.wikimedia.org/wikipedia/ko/4/4a/%EC%8B%A0%EC%A7%B1%EA%B5%AC.png',
       name: '김이름',
       age: 20,
       city: '서울시',

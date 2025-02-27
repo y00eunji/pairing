@@ -14,7 +14,7 @@ export default function ProfileCardInfoContainer({
   return (
     <div
       className="w-full h-[115px] rounded-[14px] p-[19px] bg-white flex flex-col gap-[16px] 
-    shadow-[0px_3px_3px_rgba(0,0,0,0.05),_0px_-3px_3px_rgba(0,0,0,0.05),_3px_0px_3px_rgba(0,0,0,0.05),_-3px_0px_3px_rgba(0,0,0,0.05)]"
+    shadow-[0px_6px_6px_rgba(0,0,0,0.02),_0px_-6px_6px_rgba(0,0,0,0.02),_6px_0px_6px_rgba(0,0,0,0.02),_-6px_0px_6px_rgba(0,0,0,0.02)]"
     >
       {/* 제목 */}
       <div className="flex items-center space-x-[10px] h-[24px] text-20px text-mainPink1 font-medium">

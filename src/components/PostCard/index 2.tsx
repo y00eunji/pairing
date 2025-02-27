@@ -9,7 +9,6 @@ interface PostCardProps {
   name: string;
   age: number;
   city: string;
-  profileImg: string;
   content: string;
   imageUrl?: string;
   time: Date;
@@ -21,7 +20,6 @@ export default function PostCard({
   name,
   age,
   city,
-  profileImg,
   content,
   imageUrl,
   time,
@@ -31,16 +29,10 @@ export default function PostCard({
   return (
     <div
       className="bg-white rounded-lg p-1 m-5 items-center
-    shadow-[0px_6px_6px_rgba(0,0,0,0.02),_0px_-6px_6px_rgba(0,0,0,0.02),_6px_0px_6px_rgba(0,0,0,0.02),_-6px_0px_6px_rgba(0,0,0,0.02)]"
+    shadow-[0px_3px_3px_rgba(0,0,0,0.05),_0px_-3px_3px_rgba(0,0,0,0.05),_3px_0px_3px_rgba(0,0,0,0.05),_-3px_0px_3px_rgba(0,0,0,0.05)]"
     >
       {/* 헤더 */}
-      <UserProfile
-        name={name}
-        age={age}
-        city={city}
-        imageSize={80}
-        imageSrc={profileImg}
-      />
+      <UserProfile name={name} age={age} city={city} imageSize={80} />
 
       <div className="m-4 border-t py-2">
         {/* 게시글 내용 */}

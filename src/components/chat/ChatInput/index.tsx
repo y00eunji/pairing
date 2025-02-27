@@ -9,7 +9,7 @@ import CameraIcon from '/src/assets/icons/chat_menu_camera.svg';
 import EmojiIcon from '/src/assets/icons/chat_menu_emoji.svg';
 import PictureIcon from '/src/assets/icons/chat_menu_picture.svg';
 import SendingButtonIcon from '/src/assets/icons/chat_send_button.svg';
-import DeleteButtonIcon from '/src/assets/icons/delete_gray.svg';
+import DeleteButtonIcon from '/src/assets/icons/delete_circle_gray.svg';
 
 interface Props {
   onSendMessage: () => void;
@@ -45,6 +45,8 @@ export default function ChatInput({
         <button
           aria-label="메뉴"
           onClick={() => setIsMenuOpen((prev) => !prev)}
+          className="rounded-full 
+          shadow-[0px_6px_6px_rgba(0,0,0,0.02),_0px_-6px_6px_rgba(0,0,0,0.02),_6px_0px_6px_rgba(0,0,0,0.02),_-6px_0px_6px_rgba(0,0,0,0.02)]"
         >
           {isMenuOpen ? <DeleteButtonIcon /> : <MenuButtonIcon />}
         </button>

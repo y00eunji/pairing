@@ -50,8 +50,8 @@ export default function NotificationCard({
 
   return (
     <div
-      className="relative flex items-center bg-white rounded-xl m-4 
-      shadow-[0px_4px_4px_rgba(0,0,0,0.07),_0px_-1px_1px_rgba(0,0,0,0.03),_3px_0px_3px_rgba(0,0,0,0.03),_-3px_0px_3px_rgba(0,0,0,0.03)]"
+      className="relative flex items-center bg-white rounded-xl m-4 p-1
+      shadow-[0px_6px_6px_rgba(0,0,0,0.02),_0px_-6px_6px_rgba(0,0,0,0.02),_6px_0px_6px_rgba(0,0,0,0.02),_-6px_0px_6px_rgba(0,0,0,0.02)]"
     >
       <div className="flex m-4">
         {/* 삭제 버튼 */}
@@ -72,12 +72,14 @@ export default function NotificationCard({
 
         {/* 알림 내용 */}
         <div className="flex-1">
-          <p className="text-sm font-semiBold pb-1">{messageText}</p>
-          <p className="pb-3">
+          <p className="text-sm font-medium pb-1">{messageText}</p>
+          <p className="pb-3 font-regular">
             <span>{age}, </span>
             <span>{city}</span>
           </p>
-          <p className="text-12px text-gray1 mt-1">{formatTime(time)}</p>
+          <p className="font-12-regular font-roboto text-gray1 mt-1">
+            {formatTime(time)}
+          </p>
         </div>
 
         {/* 버튼 (messageText가 있을 때만 표시) */}
@@ -85,7 +87,7 @@ export default function NotificationCard({
           <Button
             shape="circle"
             variant="filled"
-            className="absolute bottom-3 right-4 text-14px font-bold text-white rounded-3xl px-3 py-1.5"
+            className="absolute bottom-3 right-4 text-14px font-medium text-white rounded-3xl px-3 py-1.5"
           >
             {buttonText}
           </Button>

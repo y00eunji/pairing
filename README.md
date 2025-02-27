@@ -1,2 +1,1 @@
-# pAIring 프론트엔드
-
+# pAIring

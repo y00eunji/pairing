@@ -35,7 +35,6 @@
     --radius: 0.5rem;
   }
 
-
   .layout {
     @apply w-full mx-auto;
     max-width: var(--layout-max-w);
@@ -181,4 +180,18 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.loading-bar {
+  width: 50%;
+  animation: loading 1.5s infinite ease-in-out;
 }

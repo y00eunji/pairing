@@ -1,3 +1,9 @@
-export default function Login() {
-  return <div>Login</div>;
+import Login from '@/components/login';
+
+export default async function LoginPage() {
+  return (
+    <div className="px-5">
+      <Login />
+    </div>
+  );
 }

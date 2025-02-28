@@ -7,6 +7,8 @@ import axios, {
   isAxiosError,
 } from 'axios';
 
+import { getToken, logout } from '@/utils/auth';
+
 export class HttpClient {
   private client: AxiosInstance;
   private static instance: HttpClient;
@@ -58,8 +60,7 @@ export class HttpClient {
   }
 
   private onRequestFulfilled(config: InternalAxiosRequestConfig) {
-    // TODO: 토큰 발급 로직 추가
-    const token = 'access_token';
+    const token = getToken();
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -78,7 +79,12 @@ export class HttpClient {
 
   private onResponseRejected(error: AxiosError) {
     if (!isAxiosError(error)) return Promise.reject(error);
-    // TODO: 에러 처리 로직 추가
+
+    // 401 에러 처리 (토큰 만료)
+    if (error.response?.status === 401) {
+      // auth 유틸리티 함수를 사용하여 로그아웃 처리
+      logout();
+    }
 
     return Promise.reject(error.response?.data);
   }

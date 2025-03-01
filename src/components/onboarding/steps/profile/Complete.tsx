@@ -3,14 +3,18 @@
 import Button from '@/components/common/Button';
 import ProgressBar from '@/components/ProgressBar';
 import { useOnboarding } from '@/contexts/OnboardingContext';
+import { usePostMyProfile } from '@/hooks/apis/onboarding/usePostMyProfile';
 import type { StepChildProps } from '@/hooks/useFunnel';
 
 import Title from '../../Title';
 
 export default function ProfileComplete({ onNext }: StepChildProps) {
+  const { data } = useOnboarding();
   const { setCurrentStage } = useOnboarding();
+  const { mutate: postMyProfile } = usePostMyProfile();
 
   const handleNext = () => {
+    postMyProfile(data?.profile || {});
     setCurrentStage(2);
     onNext?.();
   };

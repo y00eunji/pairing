@@ -3,22 +3,21 @@ import { NextResponse } from 'next/server';
 
 async function validateToken(token: string): Promise<boolean> {
   try {
-    const isDevelopment = process.env.NODE_ENV === 'development';
-    const baseUrl = isDevelopment
-      ? 'http://localhost:3000'
-      : process.env.NEXT_PUBLIC_BASE_URL || '';
-
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
     const response = await fetch(
       `${baseUrl}/member/oauth/token?token=${token}`,
       {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
         },
       },
     );
 
-    if (!response.ok) return false;
+    if (!response.ok) {
+      return false;
+    }
 
     const data = await response.json();
     return data === true;
@@ -33,6 +32,10 @@ export async function middleware(request: NextRequest) {
   const redirect = NextResponse.redirect(new URL('/login', request.url));
 
   const pathname = request.nextUrl.pathname;
+
+  if (pathname.startsWith('/api/') || pathname.startsWith('/member/')) {
+    return response;
+  }
 
   const publicPaths = [
     '/login',
@@ -70,5 +73,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|images|$).*)'],
+  matcher: [
+    '/((?!api|_next/static|_next/image|favicon.ico|images|member|$).*)',
+  ],
 };

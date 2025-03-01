@@ -2,6 +2,8 @@
 
 import ResetIcon from '/src/assets/icons/text_reset.svg';
 
+import { useRouter } from 'next/navigation';
+
 import Button from '@/components/common/Button';
 import OnboardingHeader from '@/components/header/OnboardingHeader';
 import { useOnboarding } from '@/contexts/OnboardingContext';
@@ -14,12 +16,12 @@ import type { StepChildProps } from '@/hooks/useFunnel';
 
 export default function Name({
   onNext,
-  onPrev,
   currentStepNumber = 1,
   totalStepsNumber = 8,
 }: StepChildProps) {
   const { data, updateData } = useOnboarding();
   const { value, setValue } = useInput(data?.profile?.name || '');
+  const router = useRouter();
 
   const isButtonEnabled = value !== '';
 
@@ -30,6 +32,10 @@ export default function Name({
     onNext?.();
   };
 
+  const handlePrev = () => {
+    router.push('/privacy-consent');
+  };
+
   const handleReset = () => {
     setValue('');
   };
@@ -37,7 +43,7 @@ export default function Name({
   return (
     <div className="relative h-[100dvh]">
       <OnboardingHeader
-        onPrev={onPrev}
+        onPrev={handlePrev}
         currentStep={currentStepNumber}
         totalSteps={totalStepsNumber}
       />

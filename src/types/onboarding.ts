@@ -4,15 +4,13 @@ export interface ProfileContent {
   name?: string;
   gender?: 'MALE' | 'FEMALE';
   birth?: string;
-  address?: {
-    city: string;
-    district: string;
-  };
+  city?: string;
+  district?: string;
   hobby?: string[];
   mbti?: string;
   drink?: DrinkStatusType;
   smoke?: SmokeStatusType;
-  photo?: string[];
+  photo?: File[];
 }
 
 export interface idealTypeContent {

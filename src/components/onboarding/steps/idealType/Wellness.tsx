@@ -6,6 +6,7 @@ import OnboardingHeader from '@/components/header/OnboardingHeader';
 import type { DrinkStatusType, SmokeStatusType } from '@/constants/wellness';
 import { DRINK_STATUS, SMOKE_STATUS } from '@/constants/wellness';
 import { useOnboarding } from '@/contexts/OnboardingContext';
+import { usePostIdeal } from '@/hooks/apis/onboarding/usePostIdeal';
 import type { StepChildProps } from '@/hooks/useFunnel';
 
 import Title from '../../Title';
@@ -27,6 +28,7 @@ export default function Wellness({
     drink: data?.idealType?.drink,
     smoke: data?.idealType?.smoke,
   });
+  const { mutate: postIdeal } = usePostIdeal();
 
   const handleSelect = (
     type: 'drink' | 'smoke',
@@ -49,6 +51,7 @@ export default function Wellness({
         smoke: selectedWellness.smoke,
       },
     });
+    postIdeal(data?.idealType || {});
     onNext?.();
   };
 

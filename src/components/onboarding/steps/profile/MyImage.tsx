@@ -6,6 +6,8 @@ import Button from '@/components/common/Button';
 import ImageUploader from '@/components/common/ImageUploader';
 import OnboardingHeader from '@/components/header/OnboardingHeader';
 import { useOnboarding } from '@/contexts/OnboardingContext';
+import { getPresignedUrl } from '@/hooks/apis/common/useGetPresignedUrl';
+import { uploadImageToNcloud } from '@/hooks/apis/common/useUploadImageToNcloud';
 import type { StepChildProps } from '@/hooks/useFunnel';
 
 import Title from '../../Title';
@@ -17,28 +19,43 @@ export default function MyImage({
   totalStepsNumber = 8,
 }: StepChildProps) {
   const { data, updateData } = useOnboarding();
-  const [images, setImages] = useState<string[]>(data?.profile?.photo || []);
-  const isButtonEnabled = images.length >= 3;
+  const [files, setFiles] = useState<File[]>(data?.profile?.photo || []);
 
-  const handleImageUpload = (imageUrl: string) => {
-    if (images.length >= 5) {
+  const isButtonEnabled = files.length >= 3;
+
+  const handleImageUpload = (image: File) => {
+    if (files.length >= 5) {
       alert('이미지는 최대 5장까지 업로드할 수 있습니다.');
       return;
     }
-    setImages((prev) => [...prev, imageUrl]);
+
+    setFiles((prev) => [...prev, image]);
   };
 
   const handleImageDelete = (index: number) => {
-    setImages((prev) => prev.filter((_, i) => i !== index));
+    setFiles((prev) => prev.filter((_, i) => i !== index));
   };
 
-  const handleNext = () => {
-    if (images.length >= 3) {
-      updateData({ profile: { ...data?.profile, photo: images } });
-      onNext?.();
-    } else {
-      alert('사진을 3장 이상 추가해주세요.');
-    }
+  const handleNext = async () => {
+    if (files.length < 3) return;
+
+    await Promise.all(
+      files.map(async (file) => {
+        const imageUrl = URL.createObjectURL(file);
+        const fileName = imageUrl.split('/')[imageUrl.split('/').length - 1];
+
+        getPresignedUrl(fileName).then((res) => {
+          uploadImageToNcloud({
+            presignedUrl: res.url,
+            file,
+          });
+        });
+      }),
+    );
+
+    updateData({ profile: { ...data?.profile, photo: files } });
+
+    onNext?.();
   };
 
   return (
@@ -71,7 +88,7 @@ export default function MyImage({
                 key={index}
                 onImageUpload={handleImageUpload}
                 onImageDelete={() => handleImageDelete(index)}
-                imageUrl={images[index]}
+                image={files[index]}
                 wide={false}
               />
             ))}

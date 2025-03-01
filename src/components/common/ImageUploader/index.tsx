@@ -11,16 +11,16 @@ import ImagePlusIcon from '/src/assets/icons/image_plus.svg';
 import { cn } from '@/utils/cn';
 
 interface ImageUploaderProps {
-  onImageUpload: (imageUrl: string) => void;
+  onImageUpload: (image: File) => void;
   onImageDelete?: () => void;
-  imageUrl?: string;
+  image?: File | null;
   wide?: boolean;
 }
 
 export default function ImageUploader({
   onImageUpload,
   onImageDelete,
-  imageUrl,
+  image,
   wide,
 }: ImageUploaderProps) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -32,14 +32,7 @@ export default function ImageUploader({
   const handleImageChange = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (typeof reader.result === 'string') {
-        onImageUpload(reader.result);
-      }
-    };
-    reader.readAsDataURL(file);
+    onImageUpload(file);
   };
 
   return (
@@ -53,10 +46,10 @@ export default function ImageUploader({
             : 'w-28 h-28 bg-gray3 rounded-[14px] flex items-center justify-center overflow-hidden',
         )}
       >
-        {imageUrl ? (
+        {image ? (
           <div className="relative w-full h-full">
             <Image
-              src={imageUrl}
+              src={URL.createObjectURL(image)}
               alt="업로드된 이미지"
               className="rounded-[14px] object-cover"
               fill
@@ -69,7 +62,7 @@ export default function ImageUploader({
           </div>
         )}
       </button>
-      {imageUrl && (
+      {image && (
         <button
           type="button"
           onClick={onImageDelete}

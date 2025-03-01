@@ -18,9 +18,10 @@ export default function Address({
 }: StepChildProps) {
   const { data, updateData } = useOnboarding();
   const [isOpen, setIsOpen] = useState(false);
-  const [address, setAddress] = useState(
-    data?.profile?.address || { city: '', district: '' },
-  );
+  const [address, setAddress] = useState({
+    city: data?.profile?.city || '',
+    district: data?.profile?.district || '',
+  });
 
   const isButtonEnabled = address.city && address.district;
 
@@ -30,7 +31,13 @@ export default function Address({
 
   const handleNext = () => {
     if (!isButtonEnabled) return;
-    updateData({ profile: { ...data?.profile, address } });
+    updateData({
+      profile: {
+        ...data?.profile,
+        city: address.city,
+        district: address.district,
+      },
+    });
     onNext?.();
   };
 

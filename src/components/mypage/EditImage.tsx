@@ -11,19 +11,19 @@ import BackIcon from '/src/assets/icons/back_icon.svg';
 
 export default function EditImage() {
   const router = useRouter();
-  const [images, setImages] = useState<string[]>([]); // TODO: 서버에서 기존 이미지 받아오기
+  const [images, setImages] = useState<File[]>([]); // TODO: 서버에서 기존 이미지 받아오기
   const isButtonEnabled = images.length >= 3;
 
   const handlePrev = () => {
     router.push('/mypage');
   };
 
-  const handleImageUpload = (imageUrl: string) => {
+  const handleImageUpload = (image: File) => {
     if (images.length >= 5) {
       alert('이미지는 최대 5장까지 업로드할 수 있습니다.');
       return;
     }
-    setImages((prev) => [...prev, imageUrl]);
+    setImages((prev) => [...prev, image]);
   };
 
   const handleImageDelete = (index: number) => {
@@ -55,7 +55,7 @@ export default function EditImage() {
               key={index}
               onImageUpload={handleImageUpload}
               onImageDelete={() => handleImageDelete(index)}
-              imageUrl={images[index]}
+              image={images[index]}
               wide={false}
             />
           ))}

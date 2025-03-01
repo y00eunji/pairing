@@ -20,16 +20,16 @@ export default function PostCreate() {
   const outModal = useModal(false);
   const router = useRouter();
 
-  const [image, setImage] = useState<string>('');
+  const [image, setImage] = useState<File | null>(null);
 
   // 단일 이미지 업로드 핸들러
-  const handleImageUpload = (imageUrl: string) => {
-    setImage(imageUrl);
+  const handleImageUpload = (file: File) => {
+    setImage(file);
   };
 
   // 단일 이미지 삭제 핸들러
   const handleImageDelete = () => {
-    setImage('');
+    setImage(null);
   };
 
   return (
@@ -91,7 +91,7 @@ export default function PostCreate() {
         <ImageUploader
           onImageUpload={handleImageUpload}
           onImageDelete={handleImageDelete}
-          imageUrl={image}
+          image={image}
         />
       </div>
 

@@ -14,6 +14,7 @@ export const uploadImageToNcloud = async ({
   return axios.put(presignedUrl, file, {
     headers: {
       'Content-Type': file.type,
+      'x-amz-acl': 'public-read',
     },
   });
 };

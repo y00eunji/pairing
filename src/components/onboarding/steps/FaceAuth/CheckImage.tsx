@@ -7,6 +7,7 @@ import OnboardingHeader from '@/components/header/OnboardingHeader';
 import { useOnboarding } from '@/contexts/OnboardingContext';
 import { usePostFace } from '@/hooks/apis/onboarding/usePostFace';
 import type { StepChildProps } from '@/hooks/useFunnel';
+import { convertWebcamImageToFile } from '@/utils/image';
 
 import Title from '../../Title';
 
@@ -16,7 +17,11 @@ export default function CheckImage({ onPrev, onNext }: StepChildProps) {
 
   useEffect(() => {
     if (data?.faceAuth?.image) {
-      mutate({ image: data.faceAuth.image });
+      const formData = new FormData();
+      const file = convertWebcamImageToFile(data.faceAuth.image);
+      formData.append('file', file);
+
+      mutate(formData);
     }
   }, [data?.faceAuth?.image, mutate]);
 

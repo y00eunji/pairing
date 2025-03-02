@@ -1,14 +1,21 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import { useRouter } from 'next/navigation';
 
 import BottomNavBar from '@/components/BottomNavBar';
 import ChatListItem from '@/components/chat/ChatListItem';
 import PageHeader from '@/components/header/PageHeader';
 import SearchInput from '@/components/SearchInput';
+import { useGetChatrooms } from '@/hooks/apis/chat/useGetChatrooms';
 
 export default function Chat() {
   const router = useRouter();
+  const { data: chatrooms } = useGetChatrooms();
+  useEffect(() => {
+    console.log(chatrooms);
+  }, [chatrooms]);
 
   const chatListItems = [
     {

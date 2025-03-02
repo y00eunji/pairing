@@ -15,7 +15,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'pairing-member.kr.object.ncloudstorage.com',
+        hostname: 'kr.object.ncloudstorage.com',
       },
     ],
   },

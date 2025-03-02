@@ -5,21 +5,25 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import Button from '@/components/common/Button';
-import ImageUploader from '@/components/common/ImageUploader';
 import { getPresignedUrl } from '@/hooks/apis/common/useGetPresignedUrl';
 import { uploadImageToNcloud } from '@/hooks/apis/common/useUploadImageToNcloud';
 import { useGetMyPageProfile } from '@/hooks/apis/mypage/useGetMyPageProfile';
+import { usePutMyPageProfile } from '@/hooks/apis/mypage/usePutMyPageProfile';
+
+import EditImageUploader from './EditImageUploader';
 
 import BackIcon from '/src/assets/icons/back_icon.svg';
 
 export default function EditImage() {
   const router = useRouter();
-  const { data: profileData } = useGetMyPageProfile();
+  const { data: profileData, refetch } = useGetMyPageProfile();
+  const { mutate: putMyPageProfile } = usePutMyPageProfile();
   const [files, setFiles] = useState<File[]>([]);
   const [existingImages, setExistingImages] = useState<string[]>([]);
   const isButtonEnabled = files.length + existingImages.length >= 3;
 
   useEffect(() => {
+    refetch();
     if (profileData) {
       setExistingImages(profileData.images);
     }
@@ -55,20 +59,26 @@ export default function EditImage() {
     }
 
     try {
-      // 새로 업로드된 이미지들 처리
+      const encodedFileNames: string[] = [];
+
       await Promise.all(
         files.map(async (file) => {
-          const imageUrl = URL.createObjectURL(file);
-          const fileName = imageUrl.split('/')[imageUrl.split('/').length - 1];
+          const fileName = encodeURIComponent(file.name);
+          const contentType = encodeURIComponent(file.type);
 
-          const res = await getPresignedUrl(fileName, file.type);
+          const res = await getPresignedUrl(fileName, contentType);
           await uploadImageToNcloud({
             presignedUrl: res.url,
             file,
           });
+
+          encodedFileNames.push(fileName);
         }),
       );
 
+      putMyPageProfile({
+        images: [...existingImages, ...encodedFileNames],
+      });
       router.push('/mypage');
     } catch (error) {
       console.error('이미지 업로드 실패:', error);
@@ -88,21 +98,16 @@ export default function EditImage() {
       <div className="flex-1 px-5 py-8">
         <div className="flex flex-wrap gap-2">
           {[...Array(5)].map((_, index) => {
-            const existingImage =
-              existingImages[existingImages.length - 1 - index];
-            const newImage =
-              files[
-                files.length - 1 - Math.max(0, index - existingImages.length)
-              ];
+            const existingImage = existingImages[index];
+            const newImage = files[Math.max(0, index - existingImages.length)];
 
             return (
-              <ImageUploader
+              <EditImageUploader
                 key={index}
                 onImageUpload={handleImageUpload}
-                onImageDelete={() =>
-                  handleImageDelete(existingImages.length - 1 - index)
-                }
-                image={existingImage ? undefined : newImage}
+                onImageDelete={() => handleImageDelete(index)}
+                image={existingImage || newImage}
+                isExistingImage={!!existingImage}
                 wide={false}
               />
             );

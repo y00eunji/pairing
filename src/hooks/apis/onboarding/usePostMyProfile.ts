@@ -33,9 +33,7 @@ const postMyProfile = async (data: ProfileContent) => {
     hobby: data.hobby || [],
     images:
       data.photo?.map((file) => {
-        const imageUrl = URL.createObjectURL(file);
-        const fileName = imageUrl.split('/')[imageUrl.split('/').length - 1];
-        return fileName;
+        return encodeURIComponent(file.name);
       }) || [],
   };
 

@@ -74,7 +74,7 @@ export default function DefaultMyPage() {
     {
       icon: <PerconalityIcon />,
       title: '성격(MBTI)',
-      description: myPageProfileData?.mbti?.[0] || '정보 없음',
+      description: myPageProfileData?.mbti || '정보 없음',
     },
     {
       icon: <BeerIcon />,

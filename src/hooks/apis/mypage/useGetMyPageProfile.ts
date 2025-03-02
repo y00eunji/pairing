@@ -22,5 +22,8 @@ const getMyPageProfile = async () => {
 };
 
 export const useGetMyPageProfile = () => {
-  return useQuery({ queryKey: ['myPageProfile'], queryFn: getMyPageProfile });
+  return useQuery({
+    queryKey: ['get-myPageProfile'],
+    queryFn: getMyPageProfile,
+  });
 };

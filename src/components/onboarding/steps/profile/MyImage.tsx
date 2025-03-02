@@ -41,10 +41,10 @@ export default function MyImage({
 
     await Promise.all(
       files.map(async (file) => {
-        const imageUrl = URL.createObjectURL(file);
-        const fileName = imageUrl.split('/')[imageUrl.split('/').length - 1];
+        const fileName = encodeURIComponent(file.name);
+        const contentType = encodeURIComponent(file.type);
 
-        getPresignedUrl(fileName, file.type).then((res) => {
+        getPresignedUrl(fileName, contentType).then((res) => {
           uploadImageToNcloud({
             presignedUrl: res.url,
             file,

@@ -79,11 +79,11 @@ export default function ProfileCard({
 
       {/* 버튼 */}
       <div className="absolute right-3 bottom-3 flex items-start">
-        <button>
-          <DirectIcon />
+        <button className="group">
+          <DirectIcon className="text-white group-hover:text-mainPink2 transition-colors duration-200" />
         </button>
-        <button>
-          <HeartIcon />
+        <button className="group">
+          <HeartIcon className="text-white group-hover:text-mainPink1  transition-colors duration-200" />
         </button>
       </div>
     </div>

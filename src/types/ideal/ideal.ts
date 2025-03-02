@@ -16,7 +16,6 @@ export interface keywordRecommendList {
 }
 
 export interface keywordsList {
-  keywordId: number;
-  icon: React.ReactNode;
-  title: string;
+  keyword: string;
+  keywordIconUrl: string;
 }

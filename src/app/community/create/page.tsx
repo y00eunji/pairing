@@ -21,23 +21,6 @@ interface GetPresignedUrlResponse {
   url: string;
 }
 
-export const uploadImageToNcloud = async ({
-  presignedUrl,
-  file,
-}: {
-  presignedUrl: string;
-  file: File | null;
-}): Promise<void> => {
-  if (!file) throw new Error('File is required');
-
-  return axios.put(presignedUrl, file, {
-    headers: {
-      'Content-Type': file.type,
-      'x-amz-acl': 'public-read',
-    },
-  });
-};
-
 export default function PostCreate() {
   const { mutate: createPost } = usePostCreatePosts();
   const router = useRouter();
@@ -47,6 +30,23 @@ export default function PostCreate() {
   const [image, setImage] = useState<File | null>(null);
 
   const maxLength = 80;
+
+  const uploadImageToNcloud = async ({
+    presignedUrl,
+    file,
+  }: {
+    presignedUrl: string;
+    file: File | null;
+  }): Promise<void> => {
+    if (!file) throw new Error('File is required');
+
+    return axios.put(presignedUrl, file, {
+      headers: {
+        'Content-Type': file.type,
+        'x-amz-acl': 'public-read',
+      },
+    });
+  };
 
   const handleImageUpload = (file: File) => {
     setImage(file);

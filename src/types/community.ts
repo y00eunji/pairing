@@ -30,3 +30,13 @@ export interface MeListItem {
   userId: 2222;
   postId: 1;
 }
+
+export interface PostCreate {
+  content: string;
+  imageUrl: string;
+}
+
+export interface PostUpdate {
+  content: string;
+  imageUrl: string;
+}

@@ -15,6 +15,7 @@ interface PostCardProps {
   time: Date;
   buttonText: string;
   onButtonClick: () => void;
+  buttonComponent?: React.ReactNode;
 }
 
 export default function PostCard({
@@ -27,6 +28,7 @@ export default function PostCard({
   time,
   buttonText,
   onButtonClick,
+  buttonComponent,
 }: PostCardProps) {
   return (
     <div
@@ -40,6 +42,7 @@ export default function PostCard({
         city={city}
         imageSize={80}
         imageSrc={profileImg}
+        buttonComponent={buttonComponent}
       />
 
       <div className="m-4 border-t py-2">

@@ -1,3 +1,5 @@
+'use client';
+
 import MyPageContainer from '@/components/mypage';
 import Title from '@/components/onboarding/Title';
 

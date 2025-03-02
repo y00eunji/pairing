@@ -1,4 +1,4 @@
-import { api } from '@/api';
+import axios from 'axios';
 
 interface UploadImageRequest {
   presignedUrl: string;
@@ -11,7 +11,7 @@ export const uploadImageToNcloud = async ({
 }: UploadImageRequest): Promise<void> => {
   if (!file) throw new Error('File is required');
 
-  return api.put(presignedUrl, file, {
+  return axios.put(presignedUrl, file, {
     headers: {
       'Content-Type': file.type,
     },

@@ -44,7 +44,7 @@ export default function MyImage({
         const imageUrl = URL.createObjectURL(file);
         const fileName = imageUrl.split('/')[imageUrl.split('/').length - 1];
 
-        getPresignedUrl(fileName).then((res) => {
+        getPresignedUrl(fileName, file.type).then((res) => {
           uploadImageToNcloud({
             presignedUrl: res.url,
             file,

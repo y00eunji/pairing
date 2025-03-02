@@ -1,16 +1,24 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
 
 import Image from 'next/image';
 
 import Button from '@/components/common/Button';
 import OnboardingHeader from '@/components/header/OnboardingHeader';
+import { useOnboarding } from '@/contexts/OnboardingContext';
+import { usePostFace } from '@/hooks/apis/onboarding/usePostFace';
 import type { StepChildProps } from '@/hooks/useFunnel';
 
 import Title from '../../Title';
 
 export default function CheckImage({ onPrev, onNext }: StepChildProps) {
-  // TODO : 로딩 상태에 따라 버튼 활성화
-  const [loading] = useState(true);
+  const { data } = useOnboarding();
+  const { mutate, isSuccess, isPending } = usePostFace();
+
+  useEffect(() => {
+    if (data?.faceAuth?.image) {
+      mutate({ image: data.faceAuth.image });
+    }
+  }, [data?.faceAuth?.image, mutate]);
 
   return (
     <div className="relative h-[100dvh]">
@@ -36,9 +44,10 @@ export default function CheckImage({ onPrev, onNext }: StepChildProps) {
       <div className="absolute bottom-0 left-0 w-full px-5 py-8">
         <Button
           shape="rectangle"
-          variant={loading ? 'filled' : 'disabled'}
+          variant={isSuccess ? 'filled' : 'disabled'}
           className="w-full h-[55px]"
           onClick={onNext}
+          disabled={isPending || !isSuccess}
         >
           다음
         </Button>

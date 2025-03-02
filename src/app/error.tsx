@@ -5,7 +5,9 @@ import { useRouter } from 'next/navigation';
 
 import Button from '@/components/common/Button';
 
-export default function Error() {
+export default function Error({ error }: { error: Error; reset: () => void }) {
+  console.log('error', error);
+
   const router = useRouter();
 
   return (

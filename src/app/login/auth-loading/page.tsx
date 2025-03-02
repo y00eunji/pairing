@@ -14,22 +14,17 @@ export default function AuthLoadingPage() {
 
   useEffect(() => {
     const authCode = searchParams.get('code');
-    const state = searchParams.get('plt');
+    const provider = localStorage.getItem('oauth_provider') as
+      | 'KAKAO'
+      | 'NAVER';
 
-    if (!authCode) {
+    if (!authCode || !provider) {
       router.push('/login');
       return;
     }
 
-    let provider: 'KAKAO' | 'NAVER' = 'KAKAO';
-
-    if (state === 'naver_login') {
-      provider = 'NAVER';
-    } else if (state === 'kakao_login') {
-      provider = 'KAKAO';
-    }
-
     loginMutate({ code: authCode, type: provider });
+    localStorage.removeItem('oauth_provider'); // 사용 후 삭제
   }, [router, searchParams, loginMutate]);
 
   return (

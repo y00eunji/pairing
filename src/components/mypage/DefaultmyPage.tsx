@@ -4,8 +4,10 @@ import { useRouter } from 'next/navigation';
 
 import ProfileCardInfoContainer from '@/components/ProfileCardInfoContainer';
 import { DRINK_STATUS, SMOKE_STATUS } from '@/constants/wellness';
+import { useDeleteUser } from '@/hooks/apis/mypage/useDeleteUser';
+import { useGetMyPageProfile } from '@/hooks/apis/mypage/useGetMyPageProfile';
 import { useModal } from '@/hooks/useModal';
-import type { myProfile } from '@/types/member/mypage';
+import { logout } from '@/utils/auth';
 
 import BottomNavBar from '../BottomNavBar';
 import Button from '../common/Button';
@@ -20,22 +22,17 @@ import HobbyIcon from '/src/assets/icons/profilecard_heart_pink.svg';
 import LocationIcon from '/src/assets/icons/profilecard_location_pink.svg';
 import PerconalityIcon from '/src/assets/icons/profilecard_user_pink.svg';
 
-export default function DefaultMyPage({
-  name,
-  age,
-  mbti,
-  drink,
-  smoke,
-  city,
-  district,
-  hobby,
-}: myProfile) {
+export default function DefaultMyPage() {
   const router = useRouter();
 
   const logoutModal = useModal();
   const logoutConfirmModal = useModal();
   const withdrawalModal = useModal();
   const withdrawalConfirmModal = useModal();
+  const { data: myPageProfileData, isLoading: isProfileLoading } =
+    useGetMyPageProfile();
+
+  const { mutate: deleteUser } = useDeleteUser();
 
   const handleEdit = () => {
     router.push('/mypage/edit/info');
@@ -50,8 +47,12 @@ export default function DefaultMyPage({
   };
 
   // 음주/흡연 "키" -> "값" 변환
-  const drinkStatus = drink && DRINK_STATUS[drink];
-  const smokeStatus = smoke && SMOKE_STATUS[smoke];
+  const drinkStatus =
+    myPageProfileData?.drink &&
+    DRINK_STATUS[myPageProfileData.drink as keyof typeof DRINK_STATUS];
+  const smokeStatus =
+    myPageProfileData?.smoking &&
+    SMOKE_STATUS[myPageProfileData.smoking as keyof typeof SMOKE_STATUS];
 
   // undefined 등 falsy 값 제거
   const drinkSmokeTags = [drinkStatus, smokeStatus].filter(Boolean) as string[];
@@ -61,17 +62,19 @@ export default function DefaultMyPage({
     {
       icon: <LocationIcon />,
       title: '거주지',
-      description: `${city} ${district}`,
+      description: myPageProfileData?.city
+        ? `${myPageProfileData.city} ${myPageProfileData.district}`
+        : '정보 없음',
     },
     {
       icon: <HobbyIcon />,
       title: '취미',
-      tags: hobby,
+      tags: myPageProfileData?.hobby || [],
     },
     {
       icon: <PerconalityIcon />,
       title: '성격(MBTI)',
-      description: mbti,
+      description: myPageProfileData?.mbti?.[0] || '정보 없음',
     },
     {
       icon: <BeerIcon />,
@@ -80,6 +83,10 @@ export default function DefaultMyPage({
     },
   ];
 
+  if (isProfileLoading) {
+    return <div>로딩중...</div>;
+  }
+
   return (
     <div className="flex flex-col items-center overflow-y-auto">
       <div className="flex flex-col items-center w-full overflow-y-auto p-5">
@@ -87,8 +94,8 @@ export default function DefaultMyPage({
 
         <div className="flex flex-col items-center mb-8">
           <div className="flex mt-5 mb-2 font-24-bold gap-3 items-center justify-center">
-            <div>{name}</div>
-            <div>{age}</div>
+            <div>{myPageProfileData?.name || '이름 없음'}</div>
+            <div>{myPageProfileData?.age || '-'}</div>
             <NameStarIcon />
           </div>
 
@@ -160,7 +167,7 @@ export default function DefaultMyPage({
               label: '닫기',
               onClick: () => {
                 logoutConfirmModal.closeModal();
-                router.push('/');
+                logout();
               },
               className: 'w-full',
             },
@@ -182,6 +189,7 @@ export default function DefaultMyPage({
               onClick: () => {
                 withdrawalModal.closeModal();
                 withdrawalConfirmModal.openModal();
+                deleteUser();
               },
               className: 'text-mainPink1',
             },

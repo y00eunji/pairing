@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -10,6 +10,8 @@ import AddressOption from '@/components/common/AddressOption';
 import ChipButton from '@/components/common/ChipButton';
 import type { DrinkStatusType, SmokeStatusType } from '@/constants/wellness';
 import { DRINK_STATUS, SMOKE_STATUS } from '@/constants/wellness';
+import { useGetMyPageProfile } from '@/hooks/apis/mypage/useGetMyPageProfile';
+import { usePutMyPageProfile } from '@/hooks/apis/mypage/usePutMyPageProfile';
 
 import Button from '../common/Button';
 
@@ -40,7 +42,9 @@ const MBTI_OPTIONS = {
 
 export default function EditInfo() {
   const router = useRouter();
+  const { data: profileData } = useGetMyPageProfile();
   const [isAddressOpen, setIsAddressOpen] = useState(false);
+  const { mutate: putMyPageProfile } = usePutMyPageProfile();
 
   // 주소 상태
   const [address, setAddress] = useState({ city: '', district: '' });
@@ -64,6 +68,53 @@ export default function EditInfo() {
 
   const handleToMyPage = () => {
     router.push('/mypage');
+  };
+
+  // API 데이터로 상태 초기화
+  useEffect(() => {
+    if (profileData) {
+      const { city, district, hobby, mbti, drink, smoking } = profileData;
+
+      setAddress({ city, district });
+
+      setSelectedHobbies(hobby);
+
+      if (mbti) {
+        setMbtiSelections({
+          ei: mbti[0],
+          sn: mbti[1],
+          tf: mbti[2],
+          jp: mbti[3],
+        });
+      }
+
+      setWellness({
+        drink,
+        smoke: smoking,
+      });
+    }
+  }, [profileData]);
+
+  const handleSubmit = () => {
+    if (!profileData) return;
+
+    const mbti = Object.values(mbtiSelections).join('');
+
+    const updatedProfile = {
+      ...profileData,
+      city: address.city,
+      district: address.district,
+      hobby: selectedHobbies,
+      mbti,
+      drink: wellness.drink ?? profileData.drink,
+      smoking: wellness.smoke ?? profileData.smoking,
+    };
+
+    putMyPageProfile(updatedProfile, {
+      onSuccess: () => {
+        router.push('/mypage');
+      },
+    });
   };
 
   const handleAddressSelect = (city: string, district: string) => {
@@ -231,7 +282,7 @@ export default function EditInfo() {
           shape="rectangle"
           variant="filled"
           className="w-full h-[55px]"
-          onClick={handleToMyPage}
+          onClick={handleSubmit}
         >
           수정 완료
         </Button>

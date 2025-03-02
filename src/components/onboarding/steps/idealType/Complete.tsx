@@ -3,15 +3,20 @@
 import Button from '@/components/common/Button';
 import ProgressBar from '@/components/ProgressBar';
 import { useOnboarding } from '@/contexts/OnboardingContext';
+import { usePostIdeal } from '@/hooks/apis/onboarding/usePostIdeal';
 import type { StepChildProps } from '@/hooks/useFunnel';
 
 import Title from '../../Title';
 
 export default function Complete({ onNext }: StepChildProps) {
-  const { setCurrentStage } = useOnboarding();
+  const { data, setCurrentStage } = useOnboarding();
+
+  const { mutate: postIdeal } = usePostIdeal();
 
   const handleNext = () => {
     setCurrentStage(3);
+
+    postIdeal(data?.idealType || {});
     onNext?.();
   };
 

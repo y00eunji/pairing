@@ -14,13 +14,15 @@ import ExclamationIcon from '/src/assets/icons/alert_exclamationMark.svg';
 import { useModal } from '@/hooks/useModal';
 
 const PostsListTab = () => {
-  const checkModal = useModal(false);
+  // GET 요청
+  const { data: postList, isLoading, isError } = useGetPostList();
   // POST 요청
   const { mutate: participate } = usePostParticipation();
+
+  const checkModal = useModal(false);
+
   // 실제 환경에서는 인증 정보를 통해 가져와야 함.
   const userId = '2222';
-
-  const { data: postList, isLoading, isError } = useGetPostList();
 
   return (
     <>
@@ -50,52 +52,54 @@ const PostsListTab = () => {
           </div>
         ) : (
           // 작성한 글이 있을 때
-          postList &&
-          postList?.map((item) => (
-            <PostCard
-              key={item.id}
-              profileImg={item.profileImg}
-              name={item.name}
-              age={item.age}
-              city={item.city}
-              content={item.content ?? '/images/pairing_logo.png'}
-              imageUrl={item.imageUrl ?? '/images/pairing_logo.png'}
-              time={new Date(item.createdAt)}
-              buttonText="저요"
-              onButtonClick={() => {
-                participate(
-                  { postId: item.id, userId },
-                  {
-                    onSuccess: () => {
-                      checkModal.openModal();
-                    },
-                  },
-                );
-              }}
-            />
-          ))
+          <div>
+            {postList &&
+              postList.map((item) => (
+                <PostCard
+                  key={item.id}
+                  profileImg={item.profileImg}
+                  name={item.name}
+                  age={item.age}
+                  city={item.city}
+                  content={item.content}
+                  imageUrl={item.imageUrl}
+                  time={new Date(item.createdAt)}
+                  buttonText="저요"
+                  onButtonClick={() => {
+                    participate(
+                      { postId: item.id, userId },
+                      {
+                        onSuccess: () => {
+                          checkModal.openModal();
+                        },
+                      },
+                    );
+                  }}
+                />
+              ))}
+          </div>
         )}
-      </div>
 
-      {/* 참여 완료 모달 */}
-      <ActionModal
-        isOpen={checkModal.isOpen}
-        icon={<ExclamationIcon fill="#FF4F75" />}
-        message="참여가 완료되었습니다!"
-        buttons={[
-          {
-            label: '확인',
-            onClick: () => (window.location.href = '/community'),
-            className: 'text-mainPink1',
-          },
-        ]}
-      />
+        {/* 참여 완료 모달 */}
+        <ActionModal
+          isOpen={checkModal.isOpen}
+          icon={<ExclamationIcon fill="#FF4F75" />}
+          message="참여가 완료되었습니다!"
+          buttons={[
+            {
+              label: '확인',
+              onClick: () => (window.location.href = '/community'),
+              className: 'text-mainPink1',
+            },
+          ]}
+        />
 
-      {/* 플로팅 버튼 */}
-      <div className="absolute bottom-20 right-5 mb-6">
-        <Link href="/community/create">
-          <PlusButton aria-labelledby="게시물 생성 버튼" />
-        </Link>
+        {/* 플로팅 버튼 */}
+        <div className="absolute bottom-20 right-5 mb-6">
+          <Link href="/community/create">
+            <PlusButton aria-labelledby="게시물 생성 버튼" />
+          </Link>
+        </div>
       </div>
     </>
   );

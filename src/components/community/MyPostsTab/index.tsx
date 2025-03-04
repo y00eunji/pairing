@@ -21,10 +21,12 @@ import { useModal } from '@/hooks/useModal';
 import MoreGrayIcon from '/src/assets/icons/more_gray.svg';
 
 const MyPostsTab = () => {
+  // GET 요청
   const { data: myPosts, isLoading, isError } = useGetMyPostList();
 
   // 선택된 게시글 ID를 관리
   const [selectedPostId, setSelectedPostId] = useState<number | null>(null);
+
   // 선택된 postId를 이용해 저요 목록을 불러옴. postId가 없으면 API 호출 안 함.
   const {
     data: meList,

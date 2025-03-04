@@ -38,7 +38,7 @@ export default function PostCreate() {
     presignedUrl: string;
     file: File | null;
   }): Promise<void> => {
-    if (!file) throw new Error('File is required');
+    if (!file) throw new Error('파일이 필요합니다.');
 
     return axios.put(presignedUrl, file, {
       headers: {
@@ -56,6 +56,7 @@ export default function PostCreate() {
     setImage(null);
   };
 
+  // 제출 핸들러
   const handleSubmit = async () => {
     try {
       let imageUrl = '';
@@ -68,14 +69,17 @@ export default function PostCreate() {
 
         await uploadImageToNcloud({ presignedUrl: url, file: image });
 
-        imageUrl = url.split('?')[0];
+        imageUrl = encodeURIComponent(image.name);
       }
 
-      // 게시글 생성 API 호출
+      // 게시글 생성 POST 요청
       const postData = {
         content,
         imageUrl,
       };
+
+      console.log(postData);
+
       createPost(postData, {
         onSuccess: () => {
           window.location.href = '/community';

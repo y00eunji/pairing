@@ -29,7 +29,7 @@ export const uploadImageToNcloud = async ({
   presignedUrl: string;
   file: File | null;
 }): Promise<void> => {
-  if (!file) throw new Error('File is required');
+  if (!file) throw new Error('파일이 필요합니다.');
   return axios.put(presignedUrl, file, {
     headers: {
       'Content-Type': file.type,
@@ -76,6 +76,7 @@ export default function PostEdit({ postId }: PostEditProps) {
     setFile(null);
   };
 
+  // 제출 핸들러
   const handleSubmit = async () => {
     try {
       let imageUrl = initialImageUrl;
@@ -88,9 +89,10 @@ export default function PostEdit({ postId }: PostEditProps) {
         await uploadImageToNcloud({ presignedUrl: url, file });
         imageUrl = url;
 
-        imageUrl = url.split('?')[0];
+        imageUrl = encodeURIComponent(file.name);
       }
 
+      // 게시글 수정 PUT 요청
       const updateData = {
         content,
         imageUrl,

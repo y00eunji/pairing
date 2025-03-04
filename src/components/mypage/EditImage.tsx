@@ -76,9 +76,13 @@ export default function EditImage() {
         }),
       );
 
-      putMyPageProfile({
-        images: [...existingImages, ...encodedFileNames],
-      });
+      if (profileData) {
+        putMyPageProfile({
+          ...profileData,
+          images: [...existingImages, ...encodedFileNames],
+        });
+      }
+
       router.push('/mypage');
     } catch (error) {
       console.error('이미지 업로드 실패:', error);

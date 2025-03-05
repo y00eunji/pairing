@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone', //#
   webpack(config) {
     // SVG 파일을 컴포넌트로 사용할 수 있게 설정
     config.module.rules.push({
